@@ -28,9 +28,13 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
+tiktoken = [
+    "tiktoken>=0.5",
+]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
+    "tiktoken>=0.5",
 ]
 
 [project.urls]
