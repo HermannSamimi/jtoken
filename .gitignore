@@ -10,6 +10,9 @@ dist/
 build/
 .eggs/
 *.whl
+.claude/
+pg.py
+.env
 
 # Virtual environments
 .venv/
@@ -35,4 +38,3 @@ htmlcov/
 
 # macOS
 .DS_Store
-.claude/
