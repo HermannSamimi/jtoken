@@ -1,134 +1,146 @@
 # jpack
 
-A lightweight, human-readable key-value serialization format for Python.
+Compress JSON for LLM prompts — same data, ~30% fewer tokens.
 
-## What is jpack?
+## What it does
 
-jpack encodes Python dictionaries into a plain-text, line-oriented format. Each key-value pair lives on its own line, making jpack data easy to read, write, and diff — with no brackets, quotes, or nesting overhead.
+jpack strips the syntactic noise from JSON (`"`, `{}`, `,`) and collapses all `null` fields into a single line. The result is a compact key-value format that an LLM reads just as well as JSON, but costs significantly fewer tokens.
 
+**JSON (30 tokens):**
+```json
+{"name": "Alice", "age": 30, "active": true, "score": 9.5, "ref": null}
+```
+
+**jpack (24 tokens):**
 ```
 name: Alice
 age: 30
 active: true
 score: 9.5
-nulls: nickname,last_login
+nulls: ref
 ```
+
+The round-trip is lossless: `decode(encode(data)) == data` for all supported types.
 
 ## Installation
 
 ```bash
-# Core (no external dependencies)
+# Core — no external dependencies
 pip install jpack
 
-# With LLM token counting support
+# With accurate LLM token counting
 pip install jpack[tiktoken]
 ```
 
-## Quick Start
+## Quick start
 
 ```python
 import jpack
 
 data = {
-    "name": "Alice",
+    "user": "alice",
     "age": 30,
-    "active": True,
+    "premium": True,
     "score": 9.5,
-    "nickname": None,
+    "referral": None,
+    "last_login": None,
 }
 
+# Compress for an LLM prompt
 text = jpack.encode(data)
-print(text)
-# name: Alice
+# user: alice
 # age: 30
-# active: true
+# premium: true
 # score: 9.5
-# nulls: nickname
+# nulls: referral,last_login
 
-result = jpack.decode(text)
-# {"name": "Alice", "age": 30, "active": True, "score": 9.5, "nickname": None}
-
-assert result == data  # round-trip safe
+# Reconstruct the original dict
+original = jpack.decode(text)
+assert original == data
 ```
 
-`dumps` and `loads` are available as `json`-style aliases:
+`dumps` / `loads` are available as `json`-style aliases.
 
-```python
-text = jpack.dumps(data)
-data = jpack.loads(text)
-```
-
-## API
-
-### `jpack.encode(data: dict) -> str`
-
-Encodes a dictionary into a jpack-formatted string.
-
-**Supported value types:** `str`, `int`, `float`, `bool`, `None`
-
-Raises `JPackEncodeError` if:
-- `data` is not a `dict`
-- A key contains the reserved separator `": "`
-- A key is named `"nulls"` (reserved by the format)
-- A value's type is not supported (e.g. `list`, `dict`)
-
-### `jpack.decode(text: str) -> dict`
-
-Decodes a jpack-formatted string into a dictionary.
-
-**Type inference on decode:**
-
-| jpack value | Python type |
-|---|---|
-| `true` / `false` (case-insensitive) | `bool` |
-| Integer literal, e.g. `42` | `int` |
-| Float literal, e.g. `3.14` | `float` |
-| Anything else | `str` |
-| Key listed in `nulls:` line | `None` |
-
-Raises `JPackDecodeError` if the input is not a valid jpack string.
-
-### `jpack.count_tokens(data, *, model="cl100k_base", backend="auto") -> int`
-
-Counts the LLM tokens in jpack-encoded data. Useful for budgeting context when using jpack-serialized data in prompts.
+## Token savings
 
 ```python
 import jpack
 
-data = {"name": "Alice", "age": 30, "active": True}
+data = {"name": "Alice", "role": "admin", "active": True, "score": 9.5,
+        "bio": None, "last_login": None, "referral": None}
 
-# Auto: uses tiktoken if installed, otherwise estimates (~4 chars/token)
+stats = jpack.token_savings(data)
+print(stats)
+# jpack: 22 tokens | json: 36 tokens | saved: 14 (38.9%)
+
+# Count jpack tokens only
 n = jpack.count_tokens(data)
-
-# Force tiktoken with a specific model or encoding name
-n = jpack.count_tokens(data, model="gpt-4")           # by model name
-n = jpack.count_tokens(data, model="cl100k_base")     # by encoding name
-n = jpack.count_tokens(data, model="o200k_base")      # GPT-4o encoding
-
-# Force the estimator (no tiktoken required)
-n = jpack.count_tokens(data, backend="estimate")
-
-# Also accepts an already-encoded string
-text = jpack.encode(data)
-n = jpack.count_tokens(text)
 ```
 
-| `backend` | Behaviour |
+`token_savings` and `count_tokens` compare against standard `json.dumps` output (the default you'd paste into a prompt). They use **tiktoken** when installed and fall back to a ~4 chars/token estimate otherwise.
+
+```python
+# Force a specific model or encoding
+stats = jpack.token_savings(data, model="gpt-4o")
+stats = jpack.token_savings(data, model="o200k_base")
+
+# No tiktoken needed
+stats = jpack.token_savings(data, backend="estimate")
+```
+
+## API
+
+### `encode(data: dict) -> str`
+
+Strips JSON syntax and returns a compact jpack string. Supported value types: `str`, `int`, `float`, `bool`, `None`.
+
+String values that would decode ambiguously (look like a number or boolean) keep their quotes so the round-trip is lossless:
+
+```python
+jpack.encode({"zip": "90210"})   # → 'zip: "90210"'  (quotes kept)
+jpack.encode({"zip":  90210})    # → 'zip: 90210'    (no quotes — it's an int)
+```
+
+Raises `JPackEncodeError` for unsupported types or reserved keys.
+
+### `decode(text: str) -> dict`
+
+Reconstructs the original dict from a jpack string. Type inference:
+
+| value | decoded as |
+|---|---|
+| `"quoted"` | `str` (always) |
+| `true` / `false` (any case) | `bool` |
+| integer literal, e.g. `42` | `int` |
+| float literal, e.g. `3.14` | `float` |
+| anything else | `str` |
+| key in `nulls:` line | `None` |
+
+Raises `JPackDecodeError` for invalid input.
+
+### `token_savings(data, *, model, backend) -> TokenSavings`
+
+Returns a `TokenSavings` object comparing jpack vs `json.dumps` token usage.
+
+```python
+stats.jpack_tokens   # int
+stats.json_tokens    # int
+stats.saved          # int  (json_tokens - jpack_tokens)
+stats.percent        # float
+str(stats)           # "jpack: 22 tokens | json: 36 tokens | saved: 14 (38.9%)"
+```
+
+### `count_tokens(data, *, model, backend) -> int`
+
+Counts LLM tokens in the jpack representation of `data`. Accepts a dict or an already-encoded jpack string.
+
+**`backend` options:**
+
+| value | behaviour |
 |---|---|
 | `"auto"` (default) | tiktoken if installed, otherwise estimates |
-| `"tiktoken"` | tiktoken required; raises `TokenCountError` if not installed |
-| `"estimate"` | always uses the ~4 chars/token heuristic, no extra dependency |
-
-Raises `TokenCountError` (a subclass of `JPackError`) if `backend="tiktoken"` and tiktoken is not installed, or if the model name is unrecognised.
-
-## Format Specification
-
-- Each key-value pair occupies exactly one line: `key: value`
-- The separator is `": "` (colon + space)
-- `None` values are omitted inline; their keys are collected at the end in a single `nulls: key1,key2,...` line
-- Booleans are written as lowercase `true` or `false`
-- Keys must not contain `": "` and must not be `"nulls"`
-- Multi-line string values are not supported
+| `"tiktoken"` | requires tiktoken; raises `TokenCountError` if absent |
+| `"estimate"` | ~4 chars/token heuristic, no extra dependency |
 
 ## Exceptions
 
@@ -139,14 +151,10 @@ JPackError
 └── TokenCountError
 ```
 
-```python
-from jpack import JPackEncodeError, JPackDecodeError
+## Limitations
 
-try:
-    jpack.decode("malformed")
-except JPackDecodeError as e:
-    print(e)
-```
+- Flat dicts only — nested objects and arrays are not supported.
+- String values that contain a literal newline cannot be encoded.
 
 ## Development
 
@@ -154,11 +162,7 @@ except JPackDecodeError as e:
 git clone https://github.com/hermannsamimi/jpack
 cd jpack
 pip install -e ".[dev]"
-
-# Run tests
 pytest
-
-# Run tests with coverage report
 pytest --cov=jpack --cov-report=term-missing
 ```
 

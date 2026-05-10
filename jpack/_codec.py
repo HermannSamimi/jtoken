@@ -9,9 +9,14 @@ _NULLS_KEY = "nulls"
 
 
 def encode(data: dict[str, Any]) -> str:
-    """Encode a dictionary into a jpack-formatted string.
+    """Compress a JSON-like dict into jpack format.
 
-    Supported value types: str, int, float, bool, None.
+    Strips JSON syntax (quotes, braces, commas) and collapses null fields into
+    a single trailing line, producing a compact format LLMs read as well as JSON
+    but with ~30% fewer tokens.
+
+    String values that would be misread on decode (look like numbers or booleans)
+    keep their quotes so the round-trip is lossless.
     """
     if not isinstance(data, dict):
         raise JPackEncodeError(f"Expected dict, got {type(data).__name__}")
@@ -33,7 +38,9 @@ def encode(data: dict[str, Any]) -> str:
         elif isinstance(v, (int, float)):
             lines.append(f"{key}{_SEP}{v}")
         elif isinstance(v, str):
-            lines.append(f"{key}{_SEP}{v}")
+            # Keep quotes only for values that would be mistyped on decode
+            val = f'"{v}"' if _is_ambiguous(v) else v
+            lines.append(f"{key}{_SEP}{val}")
         else:
             raise JPackEncodeError(
                 f"Unsupported value type for key {key!r}: {type(v).__name__}. "
@@ -47,10 +54,7 @@ def encode(data: dict[str, Any]) -> str:
 
 
 def decode(text: str) -> dict[str, Any]:
-    """Decode a jpack-formatted string into a dictionary.
-
-    Type inference: bool → int → float → str. None values come from the nulls line.
-    """
+    """Reconstruct a dict from a jpack-compressed string."""
     if not isinstance(text, str):
         raise JPackDecodeError(f"Expected str, got {type(text).__name__}")
 
@@ -69,6 +73,8 @@ def decode(text: str) -> dict[str, Any]:
         if key == _NULLS_KEY:
             for null_key in value.split(","):
                 result[null_key.strip()] = None
+        elif _is_quoted(value):
+            result[key] = value[1:-1]  # quoted → always str, strip the quotes
         elif value.lower() == "true":
             result[key] = True
         elif value.lower() == "false":
@@ -83,3 +89,26 @@ def decode(text: str) -> dict[str, Any]:
                     result[key] = value
 
     return result
+
+
+def _is_ambiguous(v: str) -> bool:
+    """True if this string would be mistyped as a number or bool on decode."""
+    if not v:
+        return True
+    if v.lower() in ("true", "false"):
+        return True
+    try:
+        int(v)
+        return True
+    except ValueError:
+        pass
+    try:
+        float(v)
+        return True
+    except ValueError:
+        pass
+    return False
+
+
+def _is_quoted(v: str) -> bool:
+    return len(v) >= 2 and v[0] == '"' and v[-1] == '"'

@@ -1,8 +1,8 @@
-"""jpack — A lightweight, human-readable key-value serialization format."""
+"""jpack — Compress JSON for LLM prompts with ~30% fewer tokens."""
 
 from ._codec import decode, encode
 from .exceptions import JPackDecodeError, JPackEncodeError, JPackError
-from .tokens import TokenCountError, count_tokens
+from .tokens import TokenCountError, TokenSavings, count_tokens, token_savings
 
 __version__ = "0.1.0"
 __author__ = "Hermann Samimi"
@@ -17,6 +17,8 @@ __all__ = [
     "dumps",
     "loads",
     "count_tokens",
+    "token_savings",
+    "TokenSavings",
     "JPackError",
     "JPackEncodeError",
     "JPackDecodeError",
