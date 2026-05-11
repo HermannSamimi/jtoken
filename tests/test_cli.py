@@ -91,6 +91,23 @@ class TestCliDecode:
         assert result.returncode == 1
         assert result.stderr
 
+    def test_decode_roundtrip_no_sidecar(self):
+        encode_result = run_cli("encode", input_text=MONGO_SHELL_DOC)
+        assert encode_result.returncode == 0
+        decode_result = run_cli("decode", input_text=encode_result.stdout)
+        assert decode_result.returncode == 0
+        decoded = json.loads(decode_result.stdout)
+        assert decoded["_id"] == "69ca983fbf8c8953c43c2407"
+        assert decoded["tags"] == ["forwarded", "drive"]
+
+    def test_decode_restores_arrays_no_sidecar(self):
+        data = {"items": [1, 2, 3], "label": "test"}
+        encode_result = run_cli("encode", input_text=json.dumps(data))
+        assert encode_result.returncode == 0
+        decode_result = run_cli("decode", input_text=encode_result.stdout)
+        assert decode_result.returncode == 0
+        assert json.loads(decode_result.stdout) == data
+
     def test_decode_mongo_shell_with_context(self, tmp_path: Path):
         context_path = tmp_path / "ctx.json"
         encode_result = run_cli(

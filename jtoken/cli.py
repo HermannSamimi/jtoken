@@ -13,7 +13,7 @@ from .exceptions import (
     NormalizationError,
 )
 from .formats import INPUT_FORMAT_VALUES, OUTPUT_FORMAT_VALUES
-from .normalize import NormalizationContext, encode_document, normalize, parse_input
+from .normalize import NormalizationContext, encode_document, normalize
 from .tokens import TokenCountError
 
 
@@ -79,18 +79,9 @@ def _cmd_encode(args: argparse.Namespace) -> None:
 @_handle_errors
 def _cmd_decode(args: argparse.Namespace) -> None:
     text = _read_input(args.file)
-    if args.output_format in ("python", "json"):
-        from . import decode
-
-        data = decode(text)
-        if args.output_format == "json":
-            json.dump(data, sys.stdout, indent=2, sort_keys=True)
-            sys.stdout.write("\n")
-        else:
-            sys.stdout.write(repr(data) + "\n")
-        return
-
-    context = _load_context(args.context_in)
+    context = None
+    if args.context_in:
+        context = _load_context(args.context_in)
     data = decode_document(text, target=args.output_format, context=context)
     sys.stdout.write(render_output(data, target=args.output_format))
 

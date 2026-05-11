@@ -5,7 +5,7 @@ from typing import Any
 
 from .exceptions import DenormalizationError
 from .formats import OutputFormat
-from .normalize import NormalizationContext
+from .normalize import NormalizationContext, _CTX_LINE_PREFIX
 
 
 def denormalize(
@@ -48,12 +48,30 @@ def render_output(value: Any, *, target: str = OutputFormat.PYTHON.value) -> str
 def decode_document(
     text: str,
     *,
-    target: str = OutputFormat.PYTHON.value,
-    context: NormalizationContext,
+    target: str = OutputFormat.JSON.value,
+    context: NormalizationContext | None = None,
 ) -> Any:
     from ._codec import decode
 
-    return denormalize(decode(text), target=target, context=context)
+    ctx = context
+    body = text
+    stripped = text.lstrip()
+    if stripped.startswith(_CTX_LINE_PREFIX):
+        try:
+            newline_idx = stripped.index("\n")
+        except ValueError:
+            pass
+        else:
+            embedded = NormalizationContext.from_dict(
+                json.loads(stripped[len(_CTX_LINE_PREFIX):newline_idx])
+            )
+            body = stripped[newline_idx + 1:]
+            if ctx is None:
+                ctx = embedded
+    if ctx is None:
+        ctx = NormalizationContext()
+
+    return denormalize(decode(body), target=target, context=ctx)
 
 
 def _has_restoration_context(context: NormalizationContext, fmt: OutputFormat) -> bool:

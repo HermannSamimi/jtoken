@@ -1,6 +1,8 @@
 import json
 
 from jtoken import decode, denormalize, encode, encode_document, normalize
+from jtoken.denormalize import decode_document
+from jtoken.normalize import _CTX_LINE_PREFIX
 
 
 MONGO_SHELL_DOC = """
@@ -41,3 +43,41 @@ def test_encode_document_returns_text_and_context(tmp_path):
     context_path = tmp_path / "ctx.json"
     context_path.write_text(json.dumps(context.to_dict()), encoding="utf-8")
     assert context_path.exists()
+
+
+def test_encode_document_embeds_context_header():
+    text, ctx = encode_document(MONGO_SHELL_DOC, source="mongo_shell")
+    first_line = text.splitlines()[0]
+    assert first_line.startswith(_CTX_LINE_PREFIX)
+    embedded = json.loads(first_line[len(_CTX_LINE_PREFIX):])
+    assert embedded["typed_values"]["_id"] == "object_id"
+    assert "tags" in embedded["lists"]
+
+
+def test_encode_document_no_header_for_plain_json():
+    text, _ = encode_document({"name": "Alice", "age": 30}, source="json")
+    assert not text.startswith(_CTX_LINE_PREFIX)
+
+
+def test_roundtrip_auto_no_sidecar():
+    text, _ = encode_document(MONGO_SHELL_DOC)  # auto-detects mongo_shell
+    decoded = decode_document(text, target="json")
+    assert decoded["_id"] == "69ca983fbf8c8953c43c2407"
+    assert decoded["tags"] == ["forwarded", "drive"]
+    assert decoded["real_time"] is True
+
+
+def test_roundtrip_arrays_restored_without_sidecar():
+    data = {"users": [{"name": "Alice"}, {"name": "Bob"}], "count": 2}
+    text, _ = encode_document(data, source="json")
+    decoded = decode_document(text, target="json")
+    assert decoded == data
+
+
+def test_explicit_context_overrides_embedded():
+    text, _ = encode_document(MONGO_SHELL_DOC, source="mongo_shell")
+    from jtoken import NormalizationContext
+    empty_ctx = NormalizationContext()
+    decoded = decode_document(text, target="json", context=empty_ctx)
+    # With empty context, arrays come back as indexed dicts
+    assert isinstance(decoded["tags"], dict)

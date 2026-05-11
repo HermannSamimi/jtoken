@@ -14,6 +14,7 @@ _MONGO_SHELL_ISO_DATE = re.compile(r'ISODate\(\s*"([^"]+)"\s*\)')
 _MONGO_SHELL_NUMBER_INT = re.compile(r"NumberInt\(\s*(-?\d+)\s*\)")
 _MONGO_SHELL_NUMBER_LONG = re.compile(r"NumberLong\(\s*(-?\d+)\s*\)")
 _DOTTED_KEY_MARKER = "__DOT__"
+_CTX_LINE_PREFIX = "##jtoken "
 _MONGO_EXTENDED_KEYS = {
     "$oid",
     "$date",
@@ -106,7 +107,11 @@ def encode_document(
     from ._codec import encode
 
     normalized, ctx = normalize(raw, source=source, context=context)
-    return encode(normalized), ctx
+    body = encode(normalized)
+    if ctx.typed_values or ctx.lists or ctx.dotted_keys or ctx.elastic:
+        ctx_json = json.dumps(ctx.to_dict(), separators=(",", ":"), sort_keys=True)
+        return _CTX_LINE_PREFIX + ctx_json + "\n" + body, ctx
+    return body, ctx
 
 
 def _resolve_input_format(text: str, source: str) -> InputFormat:
