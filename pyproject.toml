@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "jtoken"
-version = "0.2.1"
+version = "0.2.2"
 description = "Compress JSON-shaped documents for LLM prompts with normalization, CLI, and token measurement"
 readme = "README.pypi.md"
 requires-python = ">=3.8"
