@@ -187,6 +187,19 @@ print(stats.jtoken_tokens, stats.json_tokens, stats.saved, stats.percent)
 
 `json_indent=2` compares against prompt-style pretty JSON. Use `json_indent=None` for compact JSON.
 
+### Representative token counts
+
+Sample payloads measured as pretty JSON versus jtoken on representative documents:
+
+| Document type | JSON | jtoken |
+|---|---:|---:|
+| ELK hit | 1537 | 583 |
+| Mongo shell | 770 | 508 |
+| PostgreSQL structured document | 831 | 685 |
+| Standard JSON | 617 | 503 |
+
+![Token count by representation](https://raw.githubusercontent.com/hermannsamimi/jtoken/main/docs/token-savings-bar-chart.svg)
+
 ## CLI
 
 ```bash

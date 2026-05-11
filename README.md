@@ -119,6 +119,19 @@ print(stats.jtoken_tokens, stats.json_tokens, stats.saved, stats.percent)
 
 `count_tokens` and `count_text_tokens` are also available. Savings compare the jtoken representation against pretty JSON by default (`json_indent=2`).
 
+### Representative token counts
+
+Sample payloads measured as pretty JSON versus jtoken on representative documents:
+
+| Document type | JSON | jtoken |
+|---|---:|---:|
+| ELK hit | 1537 | 583 |
+| Mongo shell | 770 | 508 |
+| PostgreSQL structured document | 831 | 685 |
+| Standard JSON | 617 | 503 |
+
+![Token count by representation](docs/token-savings-bar-chart.svg)
+
 ## API reference
 
 ### Package metadata
