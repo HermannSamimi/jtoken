@@ -80,8 +80,7 @@ def normalize(
     ctx = context or NormalizationContext()
     if isinstance(data, str):
         data = parse_input(data, source=source)
-    if not isinstance(data, dict):
-        raise NormalizationError(f"Expected dict, got {type(data).__name__}")
+    data = _coerce_root_document(data, ctx)
 
     if source != InputFormat.AUTO.value:
         fmt = InputFormat(source)
@@ -116,13 +115,39 @@ def _resolve_input_format(text: str, source: str) -> InputFormat:
     stripped = text.lstrip()
     if _MONGO_SHELL_OBJECT_ID.search(text) or _MONGO_SHELL_ISO_DATE.search(text):
         return InputFormat.MONGO_SHELL
-    if stripped.startswith("{"):
+    if stripped.startswith("{") or stripped.startswith("["):
         try:
             data = json.loads(text)
         except json.JSONDecodeError as exc:
             raise NormalizationError(f"Invalid JSON input: {exc}") from exc
-        return _detect_dict_format(data)
+        return _detect_parsed_format(data)
     raise NormalizationError("Could not detect input format")
+
+
+def _coerce_root_document(
+    data: Any,
+    ctx: NormalizationContext,
+) -> dict[str, Any]:
+    if isinstance(data, dict):
+        return data
+    if isinstance(data, list):
+        if len(data) == 1 and isinstance(data[0], dict):
+            return data[0]
+        ctx.lists.add("")
+        if not data:
+            return {}
+        return {str(index): item for index, item in enumerate(data)}
+    raise NormalizationError(f"Expected dict or list, got {type(data).__name__}")
+
+
+def _detect_parsed_format(data: Any) -> InputFormat:
+    if isinstance(data, dict):
+        return _detect_dict_format(data)
+    if isinstance(data, list):
+        if len(data) == 1 and isinstance(data[0], dict):
+            return _detect_dict_format(data[0])
+        return InputFormat.JSON
+    raise NormalizationError("Expected a JSON object or array")
 
 
 def _detect_dict_format(data: dict[str, Any]) -> InputFormat:

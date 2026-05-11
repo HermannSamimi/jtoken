@@ -94,6 +94,41 @@ nulls: ref
 - Reserved top-level keys: `nulls`, `trues`, `falses`.
 - Lists are normalized into nested dicts with numeric keys before encoding.
 
+## Input and output formats
+
+Use `source=` / `target=` in Python or `--input-format` / `--output-format` on the CLI. `encode`, `stats`, and `count` accept `--input-format` (default `auto`). `decode` accepts `--output-format` (default `json`).
+
+| Input (`source` / `--input-format`) | Use when |
+|---|---|
+| `auto` | Let jtoken detect the dialect from the text or object shape |
+| `json` | Standard JSON object |
+| `python` | Same JSON parser as `json` |
+| `mongo_extended` | MongoDB Extended JSON with `$oid`, `$date`, `$numberInt`, `$numberLong`, `$numberDouble`, `$numberDecimal` |
+| `mongo_shell` | MongoDB shell document with `ObjectId()`, `ISODate()`, `NumberInt()`, `NumberLong()` |
+| `elastic_hit` | Elasticsearch search hit with `_source` (and optional `fields`) |
+| `elastic_source` | `_source` payload only, or a document wrapped as `{"_source": {...}}` |
+
+| Output (`target` / `--output-format`) | Use when |
+|---|---|
+| `python` | Python `repr` (Python API default) |
+| `json` | Pretty-printed JSON (CLI `decode` default) |
+| `mongo_extended` | Extended JSON; requires a context sidecar for BSON-like types |
+| `mongo_shell` | Mongo shell document; requires a context sidecar for BSON-like types |
+| `elastic_hit` | Full Elasticsearch hit envelope; requires a context sidecar |
+| `elastic_source` | JSON shaped like an Elasticsearch `_source` wrapper |
+
+With `auto`, jtoken picks `mongo_shell` when it sees `ObjectId(...)` or `ISODate(...)`, `elastic_hit` when the object has a dict `_source`, `mongo_extended` when Extended JSON markers such as `$oid` or `$date` appear, and otherwise `json`.
+
+Write the normalization context to a sidecar on encode (`--context-out` / `NormalizationContext.to_dict()`) and pass it back on decode when the output dialect is not plain JSON or Python. The sidecar records list paths, dotted keys, Elasticsearch envelope metadata, and MongoDB type markers in `typed_values` (`object_id`, `datetime`, `long`).
+
+### MongoDB shell and Extended JSON
+
+Mongo shell input is parsed as JSON after rewriting shell literals: `ObjectId("...")` and `ISODate("...")` become Extended JSON, `NumberInt(n)` becomes a plain integer, and `NumberLong(n)` becomes `{"$numberLong": "n"}`. On normalize, `object_id`, `datetime`, and `long` values are stored in the context so `mongo_extended` and `mongo_shell` output can restore `{"$oid": ...}` / `ObjectId(...)`, `{"$date": ...}` / `ISODate(...)`, and `{"$numberLong": ...}` / `NumberLong(...)`. `$numberInt`, `$numberDouble`, and `$numberDecimal` are coerced to Python scalars and are not tracked in `typed_values`.
+
+### Elasticsearch hits
+
+`elastic_hit` encodes the merged `_source` document (plus any `fields` values that are not already present in `_source`) and stores `_index`, `_id`, `_version`, `_score`, `_type`, and `_routing` in the context for lossless `elastic_hit` output.
+
 ## Public API reference
 
 ### Package metadata
