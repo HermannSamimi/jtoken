@@ -1,6 +1,6 @@
 import pytest
 
-from jpack import TokenSavings, count_tokens, token_savings
+from jtoken import TokenSavings, count_tokens, token_savings
 
 tiktoken = pytest.importorskip("tiktoken", reason="tiktoken not installed")
 
@@ -15,9 +15,9 @@ class TestCountTokens:
     def test_returns_zero_for_empty_dict(self):
         assert count_tokens({}) == 0
 
-    def test_accepts_jpack_string(self):
-        import jpack
-        text = jpack.encode(_SAMPLE)
+    def test_accepts_jtoken_string(self):
+        import jtoken
+        text = jtoken.encode(_SAMPLE)
         assert count_tokens(text) == count_tokens(_SAMPLE)
 
     def test_estimate_backend(self):
@@ -43,9 +43,9 @@ class TestTokenSavings:
         result = token_savings(_SAMPLE)
         assert isinstance(result, TokenSavings)
 
-    def test_jpack_uses_fewer_tokens_than_json(self):
+    def test_jtoken_uses_fewer_tokens_than_json(self):
         result = token_savings(_SAMPLE)
-        assert result.jpack_tokens < result.json_tokens
+        assert result.jtoken_tokens < result.json_tokens
 
     def test_saved_is_positive(self):
         result = token_savings(_SAMPLE)
@@ -60,9 +60,9 @@ class TestTokenSavings:
         result = token_savings(_SAMPLE)
         assert result.percent >= 10
 
-    def test_accepts_jpack_string(self):
-        import jpack
-        text = jpack.encode(_SAMPLE)
+    def test_accepts_jtoken_string(self):
+        import jtoken
+        text = jtoken.encode(_SAMPLE)
         result = token_savings(text)
         assert isinstance(result, TokenSavings)
         assert result.saved > 0
@@ -70,7 +70,7 @@ class TestTokenSavings:
     def test_str_representation(self):
         result = token_savings(_SAMPLE)
         s = str(result)
-        assert "jpack:" in s
+        assert "jtoken:" in s
         assert "json:" in s
         assert "saved:" in s
 
@@ -80,5 +80,5 @@ class TestTokenSavings:
 
     def test_empty_dict(self):
         result = token_savings({})
-        assert result.jpack_tokens == 0
+        assert result.jtoken_tokens == 0
         assert result.json_tokens >= 0

@@ -21,14 +21,14 @@ class TokenCountError(JPackError):
 
 @dataclass
 class TokenSavings:
-    """Token comparison between jpack and JSON representations."""
+    """Token comparison between jtoken and JSON representations."""
 
-    jpack_tokens: int
+    jtoken_tokens: int
     json_tokens: int
 
     @property
     def saved(self) -> int:
-        return self.json_tokens - self.jpack_tokens
+        return self.json_tokens - self.jtoken_tokens
 
     @property
     def percent(self) -> float:
@@ -38,7 +38,7 @@ class TokenSavings:
 
     def __str__(self) -> str:
         return (
-            f"jpack: {self.jpack_tokens} tokens | "
+            f"jtoken: {self.jtoken_tokens} tokens | "
             f"json: {self.json_tokens} tokens | "
             f"saved: {self.saved} ({self.percent:.1f}%)"
         )
@@ -50,10 +50,10 @@ def count_tokens(
     model: str = "cl100k_base",
     backend: str = "auto",
 ) -> int:
-    """Count the LLM tokens in jpack-encoded data.
+    """Count the LLM tokens in jtoken-encoded data.
 
     Args:
-        data:    A dict (auto-encoded to jpack) or an already-encoded jpack string.
+        data:    A dict (auto-encoded to jtoken) or an already-encoded jtoken string.
         model:   tiktoken encoding or model name (default: cl100k_base, used by
                  GPT-4 and a close approximation for Claude).
                  Accepts encoding names ("cl100k_base", "o200k_base") or
@@ -63,7 +63,7 @@ def count_tokens(
                  "estimate" — always uses the ~4 chars/token heuristic.
 
     Returns:
-        Integer token count for the jpack representation.
+        Integer token count for the jtoken representation.
     """
     text = encode(data) if isinstance(data, dict) else data
     return _count(text, model=model, backend=backend)
@@ -75,35 +75,35 @@ def token_savings(
     model: str = "cl100k_base",
     backend: str = "auto",
 ) -> TokenSavings:
-    """Compare token usage between jpack and JSON for the same data.
+    """Compare token usage between jtoken and JSON for the same data.
 
     Args:
-        data:    A dict or an already-encoded jpack string.
+        data:    A dict or an already-encoded jtoken string.
         model:   tiktoken encoding or model name (see count_tokens).
         backend: counting backend (see count_tokens).
 
     Returns:
-        TokenSavings with jpack_tokens, json_tokens, saved, and percent.
+        TokenSavings with jtoken_tokens, json_tokens, saved, and percent.
 
     Example::
 
-        stats = jpack.token_savings({"name": "Alice", "age": 30, "active": True})
+        stats = jtoken.token_savings({"name": "Alice", "age": 30, "active": True})
         print(stats)
-        # jpack: 8 tokens | json: 12 tokens | saved: 4 (33.3%)
+        # jtoken: 8 tokens | json: 12 tokens | saved: 4 (33.3%)
     """
     if isinstance(data, str):
         source_dict = decode(data)
-        jpack_text = data
+        jtoken_text = data
     else:
         source_dict = data
-        jpack_text = encode(data)
+        jtoken_text = encode(data)
 
     json_text = json.dumps(source_dict)
 
-    jpack_n = _count(jpack_text, model=model, backend=backend)
+    jtoken_n = _count(jtoken_text, model=model, backend=backend)
     json_n = _count(json_text, model=model, backend=backend)
 
-    return TokenSavings(jpack_tokens=jpack_n, json_tokens=json_n)
+    return TokenSavings(jtoken_tokens=jtoken_n, json_tokens=json_n)
 
 
 def _count(text: str, *, model: str, backend: str) -> int:
@@ -112,7 +112,7 @@ def _count(text: str, *, model: str, backend: str) -> int:
 
     if backend == "tiktoken" and not _TIKTOKEN_AVAILABLE:
         raise TokenCountError(
-            "tiktoken is not installed. Run: pip install jpack[tiktoken]"
+            "tiktoken is not installed. Run: pip install jtoken[tiktoken]"
         )
 
     if _TIKTOKEN_AVAILABLE and backend in ("auto", "tiktoken"):

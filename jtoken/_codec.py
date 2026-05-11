@@ -12,7 +12,7 @@ _RESERVED = {_NULLS_KEY, _TRUES_KEY, _FALSES_KEY}
 
 
 def encode(data: dict[str, Any]) -> str:
-    """Compress a JSON-like dict into jpack format.
+    """Compress a JSON-like dict into jtoken format.
 
     Strips JSON syntax and collapses all null, true, and false fields each into
     a single summary line. Nested dicts are flattened with dot notation.
@@ -57,7 +57,7 @@ def encode(data: dict[str, Any]) -> str:
 
 
 def decode(text: str) -> dict[str, Any]:
-    """Reconstruct a dict from a jpack-compressed string."""
+    """Reconstruct a dict from a jtoken-compressed string."""
     if not isinstance(text, str):
         raise JPackDecodeError(f"Expected str, got {type(text).__name__}")
 

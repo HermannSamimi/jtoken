@@ -1,10 +1,10 @@
-# jpack
+# jtoken
 
 Compress JSON for LLM prompts — same data, fewer tokens.
 
 ## What it does
 
-jpack strips the syntactic noise from JSON (`"`, `{}`, `,`) and collapses all
+jtoken strips the syntactic noise from JSON (`"`, `{}`, `,`) and collapses all
 `null`, `true`, and `false` fields each into a single summary line. Nested dicts
 are flattened with dot notation so the same collapse applies at every level.
 The result is a compact format an LLM reads just as well as JSON.
@@ -14,7 +14,7 @@ The result is a compact format an LLM reads just as well as JSON.
 {"name": "Alice", "age": 30, "active": true, "verified": false, "ref": null}
 ```
 
-**jpack (21 tokens):**
+**jtoken (21 tokens):**
 ```
 name: Alice
 age: 30
@@ -29,16 +29,16 @@ The round-trip is lossless: `decode(encode(data)) == data` for all supported typ
 
 ```bash
 # Core — no external dependencies
-pip install jpack
+pip install jtoken
 
 # With accurate LLM token counting
-pip install jpack[tiktoken]
+pip install jtoken[tiktoken]
 ```
 
 ## Quick start
 
 ```python
-import jpack
+import jtoken
 
 data = {
     "user": "alice",
@@ -52,7 +52,7 @@ data = {
     "last_login": None,
 }
 
-text = jpack.encode(data)
+text = jtoken.encode(data)
 # user: alice
 # age: 30
 # score: 9.5
@@ -60,11 +60,54 @@ text = jpack.encode(data)
 # falses: is_remote,trial
 # nulls: referral,last_login
 
-original = jpack.decode(text)
+original = jtoken.decode(text)
 assert original == data
 ```
 
 `dumps` / `loads` are available as `json`-style aliases.
+
+## Normalization and denormalization
+
+Foreign document shapes such as Elasticsearch hits, MongoDB Extended JSON, and
+Mongo shell literals can be normalized into the scalar dict model before encoding.
+Use a sidecar normalization context file to restore the original dialect after
+decode.
+
+```python
+import jtoken
+
+raw_hit = {...}  # Elasticsearch hit with _source and fields
+normalized, context = jtoken.normalize(raw_hit, source="elastic_hit")
+text = jtoken.encode(normalized)
+restored = jtoken.denormalize(
+    jtoken.decode(text),
+    target="elastic_hit",
+    context=context,
+)
+```
+
+```bash
+jtoken encode --input-format elastic_hit -f hit.json --context-out hit.ctx.json
+jtoken decode --output-format mongo_shell -f hit.jtoken --context-in hit.ctx.json
+```
+
+Supported input dialects: `auto`, `json`, `python`, `mongo_extended`,
+`mongo_shell`, `elastic_hit`, and `elastic_source`.
+
+Supported output dialects: `python`, `json`, `mongo_extended`, `mongo_shell`,
+`elastic_hit`, and `elastic_source`.
+
+## CLI
+
+```bash
+echo '{"name": "Alice", "active": true}' | jtoken encode
+echo 'name: Alice\ntrues: active' | jtoken decode
+echo '{"name": "Alice", "active": true}' | jtoken stats
+echo '{"name": "Alice", "active": true}' | jtoken count
+```
+
+Use `-f/--file` to read from a file instead of stdin. `stats` and `count` accept
+`--model` and `--backend` (`auto`, `tiktoken`, `estimate`).
 
 ## Nested documents
 
@@ -85,7 +128,7 @@ data = {
     },
 }
 
-print(jpack.encode(data))
+print(jtoken.encode(data))
 # title: Engineer
 # trues: metadata.verified,metadata.source.crawled
 # falses: metadata.sponsored
@@ -95,7 +138,7 @@ print(jpack.encode(data))
 Decode reconstructs the full nested structure:
 
 ```python
-assert jpack.decode(jpack.encode(data)) == data  # ✓
+assert jtoken.decode(jtoken.encode(data)) == data  # ✓
 ```
 
 **Limitation:** keys cannot contain `.` (reserved for nesting) or `": "`.
@@ -104,13 +147,13 @@ Arrays are not supported.
 ## Token savings
 
 ```python
-import jpack
+import jtoken
 
-stats = jpack.token_savings(data)
+stats = jtoken.token_savings(data)
 print(stats)
-# jpack: 22 tokens | json: 36 tokens | saved: 14 (38.9%)
+# jtoken: 22 tokens | json: 36 tokens | saved: 14 (38.9%)
 
-n = jpack.count_tokens(data)  # count jpack tokens only
+n = jtoken.count_tokens(data)  # count jtoken tokens only
 ```
 
 Savings are compared against `json.dumps(data)` — the standard representation
@@ -119,18 +162,18 @@ or boolean fields.
 
 ```python
 # Specify model or encoding
-stats = jpack.token_savings(data, model="gpt-4o")
-stats = jpack.token_savings(data, model="o200k_base")
+stats = jtoken.token_savings(data, model="gpt-4o")
+stats = jtoken.token_savings(data, model="o200k_base")
 
 # No tiktoken dependency
-stats = jpack.token_savings(data, backend="estimate")
+stats = jtoken.token_savings(data, backend="estimate")
 ```
 
 ## API
 
 ### `encode(data: dict) -> str`
 
-Compresses a dict into jpack. Supported value types: `str`, `int`, `float`,
+Compresses a dict into jtoken. Supported value types: `str`, `int`, `float`,
 `bool`, `None`, nested `dict`.
 
 **Summary lines (always at the end):**
@@ -145,10 +188,10 @@ String values that would decode ambiguously (look like a number or boolean)
 keep their quotes:
 
 ```python
-jpack.encode({"zip": "90210"})  # → 'zip: "90210"'   (string, quotes kept)
-jpack.encode({"zip":  90210})   # → 'zip: 90210'      (int, no quotes)
-jpack.encode({"ok": "true"})    # → 'ok: "true"'      (string, quotes kept)
-jpack.encode({"ok": True})      # → 'trues: ok'       (bool, collapsed)
+jtoken.encode({"zip": "90210"})  # → 'zip: "90210"'   (string, quotes kept)
+jtoken.encode({"zip":  90210})   # → 'zip: 90210'      (int, no quotes)
+jtoken.encode({"ok": "true"})    # → 'ok: "true"'      (string, quotes kept)
+jtoken.encode({"ok": True})      # → 'trues: ok'       (bool, collapsed)
 ```
 
 Raises `JPackEncodeError` for unsupported types, dots or `": "` in keys, or
@@ -173,20 +216,20 @@ Raises `JPackDecodeError` for invalid input.
 
 ### `token_savings(data, *, model, backend) -> TokenSavings`
 
-Compares jpack vs `json.dumps` token usage.
+Compares jtoken vs `json.dumps` token usage.
 
 ```python
-stats.jpack_tokens   # int
+stats.jtoken_tokens   # int
 stats.json_tokens    # int
 stats.saved          # int
 stats.percent        # float
-str(stats)           # "jpack: 22 tokens | json: 36 tokens | saved: 14 (38.9%)"
+str(stats)           # "jtoken: 22 tokens | json: 36 tokens | saved: 14 (38.9%)"
 ```
 
 ### `count_tokens(data, *, model, backend) -> int`
 
-Counts LLM tokens in the jpack representation. Accepts a dict or an
-already-encoded jpack string.
+Counts LLM tokens in the jtoken representation. Accepts a dict or an
+already-encoded jtoken string.
 
 **`backend` options:**
 
@@ -208,11 +251,11 @@ JPackError
 ## Development
 
 ```bash
-git clone https://github.com/hermannsamimi/jpack
-cd jpack
+git clone https://github.com/hermannsamimi/jtoken
+cd jtoken
 pip install -e ".[dev]"
 pytest
-pytest --cov=jpack --cov-report=term-missing
+pytest --cov=jtoken --cov-report=term-missing
 ```
 
 ## License

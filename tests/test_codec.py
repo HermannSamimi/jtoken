@@ -1,6 +1,6 @@
 import pytest
 
-from jpack import JPackDecodeError, JPackEncodeError, decode, encode
+from jtoken import JPackDecodeError, JPackEncodeError, decode, encode
 
 
 class TestEncode:

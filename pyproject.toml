@@ -3,16 +3,16 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "jpack"
-version = "0.1.0"
+name = "jtoken"
+version = "0.2.0"
 description = "A lightweight, human-readable key-value serialization format"
 readme = "README.md"
 requires-python = ">=3.8"
 authors = [
     { name = "Hermann Samimi", email = "hermannsamimi@gmail.com" },
 ]
-license = { text = "MIT" }
-keywords = ["serialization", "encoding", "key-value", "format", "text"]
+license = "MIT"
+keywords = ["serialization", "encoding", "key-value", "format", "text", "llm", "tokens"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -35,15 +35,19 @@ dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
     "tiktoken>=0.5",
+    "build>=1.0",
 ]
 
+[project.scripts]
+jtoken = "jtoken.cli:main"
+
 [project.urls]
-Homepage = "https://github.com/hermannsamimi/jpack"
-Repository = "https://github.com/hermannsamimi/jpack"
-Issues = "https://github.com/hermannsamimi/jpack/issues"
+Homepage = "https://github.com/hermannsamimi/jtoken"
+Repository = "https://github.com/hermannsamimi/jtoken"
+Issues = "https://github.com/hermannsamimi/jtoken/issues"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["jpack"]
+packages = ["jtoken"]
