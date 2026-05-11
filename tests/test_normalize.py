@@ -60,6 +60,12 @@ class TestParseInput:
     def test_parse_json(self):
         assert parse_input('{"a": 1}', source="json") == {"a": 1}
 
+    def test_parse_json_array(self):
+        assert parse_input('[{"a": 1}]', source="json") == [{"a": 1}]
+
+    def test_parse_json_array_auto(self):
+        assert parse_input('[{"a": 1}]', source="auto") == [{"a": 1}]
+
     def test_parse_mongo_shell(self):
         parsed = parse_input(MONGO_SHELL_DOC, source="mongo_shell")
         assert parsed["_id"]["$oid"] == "69ca983fbf8c8953c43c2407"
@@ -126,3 +132,27 @@ class TestNormalizeErrors:
     def test_unsupported_type_raises(self):
         with pytest.raises(NormalizationError):
             normalize({"bad": object()}, source="json")
+
+
+class TestNormalizeJsonArrays:
+    def test_single_object_array_is_unwrapped(self):
+        normalized, context = normalize('[{"QUERY_ID": "q-1", "ROWS_DELETED": 0}]', source="json")
+        assert normalized["QUERY_ID"] == "q-1"
+        assert normalized["ROWS_DELETED"] == 0
+        assert "" not in context.lists
+
+    def test_single_object_array_auto(self):
+        normalized, _ = normalize('[{"a": 1}]', source="auto")
+        assert normalized == {"a": 1}
+
+    def test_multi_object_array_is_indexed(self):
+        normalized, context = normalize('[{"a": 1}, {"b": 2}]', source="json")
+        assert normalized["0"]["a"] == 1
+        assert normalized["1"]["b"] == 2
+        assert "" in context.lists
+
+    def test_primitive_array_is_indexed(self):
+        normalized, context = normalize('["a", "b"]', source="json")
+        assert normalized["0"] == "a"
+        assert normalized["1"] == "b"
+        assert "" in context.lists
