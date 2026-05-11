@@ -4,9 +4,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "jtoken"
-version = "0.2.0"
-description = "A lightweight, human-readable key-value serialization format"
-readme = "README.md"
+version = "0.2.1"
+description = "Compress JSON-shaped documents for LLM prompts with normalization, CLI, and token measurement"
+readme = "README.pypi.md"
 requires-python = ">=3.8"
 authors = [
     { name = "Hermann Samimi", email = "hermannsamimi@gmail.com" },

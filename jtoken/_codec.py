@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from .exceptions import JPackDecodeError, JPackEncodeError
@@ -38,8 +39,7 @@ def encode(data: dict[str, Any]) -> str:
         elif isinstance(v, (int, float)):
             lines.append(f"{k}{_SEP}{v}")
         elif isinstance(v, str):
-            val = f'"{v}"' if _is_ambiguous(v) else v
-            lines.append(f"{k}{_SEP}{val}")
+            lines.append(f"{k}{_SEP}{_format_string_value(v)}")
         else:
             raise JPackEncodeError(
                 f"Unsupported value type for key {k!r}: {type(v).__name__}. "
@@ -83,7 +83,7 @@ def decode(text: str) -> dict[str, Any]:
             for k in value.split(","):
                 flat[k.strip()] = False
         elif _is_quoted(value):
-            flat[key] = value[1:-1]
+            flat[key] = _parse_quoted_string(value)
         elif value.lower() == "true":
             flat[key] = True   # backward-compat with inline key: true
         elif value.lower() == "false":
@@ -135,6 +135,22 @@ def _unflatten(flat: dict[str, Any]) -> dict[str, Any]:
             d = d[part]
         d[parts[-1]] = value
     return result
+
+
+def _format_string_value(v: str) -> str:
+    if _is_ambiguous(v) or "\n" in v or "\r" in v:
+        return json.dumps(v)
+    return v
+
+
+def _parse_quoted_string(value: str) -> str:
+    try:
+        parsed = json.loads(value)
+    except json.JSONDecodeError:
+        return value[1:-1]
+    if isinstance(parsed, str):
+        return parsed
+    return value[1:-1]
 
 
 def _is_ambiguous(v: str) -> bool:

@@ -108,6 +108,20 @@ class TestNormalizationContext:
         assert restored.lists == context.lists
 
 
+class TestDottedKeys:
+    def test_nested_key_with_dot_is_sanitized(self):
+        data = {
+            "query": {
+                "match_phrase": {
+                    "event.action": "download",
+                }
+            }
+        }
+        normalized, context = normalize(data, source="json")
+        assert "event__DOT__action" in normalized["query"]["match_phrase"]
+        assert context.dotted_keys
+
+
 class TestNormalizeErrors:
     def test_unsupported_type_raises(self):
         with pytest.raises(NormalizationError):

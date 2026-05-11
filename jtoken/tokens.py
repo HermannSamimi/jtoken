@@ -69,11 +69,22 @@ def count_tokens(
     return _count(text, model=model, backend=backend)
 
 
+def count_text_tokens(
+    text: str,
+    *,
+    model: str = "cl100k_base",
+    backend: str = "auto",
+) -> int:
+    """Count LLM tokens in a raw text string."""
+    return _count(text, model=model, backend=backend)
+
+
 def token_savings(
     data: Union[dict[str, Any], str],
     *,
     model: str = "cl100k_base",
     backend: str = "auto",
+    json_indent: int | None = 2,
 ) -> TokenSavings:
     """Compare token usage between jtoken and JSON for the same data.
 
@@ -81,6 +92,8 @@ def token_savings(
         data:    A dict or an already-encoded jtoken string.
         model:   tiktoken encoding or model name (see count_tokens).
         backend: counting backend (see count_tokens).
+        json_indent: indentation for the JSON baseline. Use ``2`` for
+            prompt-style pretty JSON, or ``None`` for compact JSON.
 
     Returns:
         TokenSavings with jtoken_tokens, json_tokens, saved, and percent.
@@ -98,7 +111,10 @@ def token_savings(
         source_dict = data
         jtoken_text = encode(data)
 
-    json_text = json.dumps(source_dict)
+    if json_indent is None:
+        json_text = json.dumps(source_dict, ensure_ascii=False, separators=(",", ":"))
+    else:
+        json_text = json.dumps(source_dict, ensure_ascii=False, indent=json_indent)
 
     jtoken_n = _count(jtoken_text, model=model, backend=backend)
     json_n = _count(json_text, model=model, backend=backend)

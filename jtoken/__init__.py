@@ -11,9 +11,15 @@ from .exceptions import (
 )
 from .formats import InputFormat, OutputFormat
 from .normalize import NormalizationContext, encode_document, normalize, parse_input
-from .tokens import TokenCountError, TokenSavings, count_tokens, token_savings
+from .tokens import (
+    TokenCountError,
+    TokenSavings,
+    count_text_tokens,
+    count_tokens,
+    token_savings,
+)
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 __author__ = "Hermann Samimi"
 
 # json-style aliases
@@ -26,6 +32,7 @@ __all__ = [
     "dumps",
     "loads",
     "count_tokens",
+    "count_text_tokens",
     "token_savings",
     "TokenSavings",
     "JPackError",

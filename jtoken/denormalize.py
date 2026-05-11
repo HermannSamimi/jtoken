@@ -23,6 +23,7 @@ def denormalize(
         )
 
     restored = _rebuild_lists_at_paths(data, context, "")
+    restored = _restore_dotted_keys(restored, context, "")
     restored = _apply_typed_values(restored, context, fmt)
     if fmt == OutputFormat.ELASTIC_HIT:
         return _wrap_elastic_hit(restored, context)
@@ -64,6 +65,26 @@ def _has_restoration_context(context: NormalizationContext, fmt: OutputFormat) -
     if fmt == OutputFormat.ELASTIC_HIT:
         return context.elastic is not None
     return True
+
+
+def _restore_dotted_keys(
+    value: Any,
+    context: NormalizationContext,
+    path: str,
+) -> Any:
+    if isinstance(value, list):
+        return [
+            _restore_dotted_keys(item, context, _join_path(path, str(index)))
+            for index, item in enumerate(value)
+        ]
+    if isinstance(value, dict):
+        restored: dict[str, Any] = {}
+        for key, child in value.items():
+            child_path = _join_path(path, key)
+            original_key = context.dotted_keys.get(child_path, key)
+            restored[original_key] = _restore_dotted_keys(child, context, child_path)
+        return restored
+    return value
 
 
 def _rebuild_lists_at_paths(

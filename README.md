@@ -2,38 +2,27 @@
 
 Compress JSON for LLM prompts — same data, fewer tokens.
 
-## What it does
+**Author:** Hermann Samimi
 
-jtoken strips the syntactic noise from JSON (`"`, `{}`, `,`) and collapses all
-`null`, `true`, and `false` fields each into a single summary line. Nested dicts
-are flattened with dot notation so the same collapse applies at every level.
-The result is a compact format an LLM reads just as well as JSON.
-
-**JSON (30 tokens):**
-```json
-{"name": "Alice", "age": 30, "active": true, "verified": false, "ref": null}
-```
-
-**jtoken (21 tokens):**
-```
-name: Alice
-age: 30
-trues: active
-falses: verified
-nulls: ref
-```
-
-The round-trip is lossless: `decode(encode(data)) == data` for all supported types.
+jtoken strips JSON syntactic noise, collapses repeated booleans and nulls into summary lines, flattens nested dicts with dot notation, and supports normalization for Elasticsearch hits and MongoDB JSON. The package ships as a stdlib-first library with an optional `tiktoken` extra and a `jtoken` CLI.
 
 ## Installation
 
-```bash
-# Core — no external dependencies
-pip install jtoken
+### Core
 
-# With accurate LLM token counting
-pip install jtoken[tiktoken]
+```bash
+pip install jtoken
 ```
+
+No extra runtime dependencies.
+
+### With tokenizer-accurate counting
+
+```bash
+pip install "jtoken[tiktoken]"
+```
+
+Use the `tiktoken` extra when you want OpenAI-compatible token counts instead of the built-in estimate backend.
 
 ## Quick start
 
@@ -53,30 +42,40 @@ data = {
 }
 
 text = jtoken.encode(data)
-# user: alice
-# age: 30
-# score: 9.5
-# trues: premium,verified
-# falses: is_remote,trial
-# nulls: referral,last_login
-
 original = jtoken.decode(text)
 assert original == data
 ```
 
-`dumps` / `loads` are available as `json`-style aliases.
+`dumps` / `loads` are json-style aliases for `encode` / `decode`.
+
+## What the format looks like
+
+**JSON**
+
+```json
+{"name": "Alice", "age": 30, "active": true, "verified": false, "ref": null}
+```
+
+**jtoken**
+
+```text
+name: Alice
+age: 30
+trues: active
+falses: verified
+nulls: ref
+```
+
+Nested dicts flatten with dot notation. Booleans and nulls at any depth collapse into the same summary lines. Decode reconstructs the original nested structure.
 
 ## Normalization and denormalization
 
-Foreign document shapes such as Elasticsearch hits, MongoDB Extended JSON, and
-Mongo shell literals can be normalized into the scalar dict model before encoding.
-Use a sidecar normalization context file to restore the original dialect after
-decode.
+Foreign document shapes can be normalized before encoding and restored after decode with a sidecar context.
 
 ```python
 import jtoken
 
-raw_hit = {...}  # Elasticsearch hit with _source and fields
+raw_hit = {...}
 normalized, context = jtoken.normalize(raw_hit, source="elastic_hit")
 text = jtoken.encode(normalized)
 restored = jtoken.denormalize(
@@ -91,11 +90,9 @@ jtoken encode --input-format elastic_hit -f hit.json --context-out hit.ctx.json
 jtoken decode --output-format mongo_shell -f hit.jtoken --context-in hit.ctx.json
 ```
 
-Supported input dialects: `auto`, `json`, `python`, `mongo_extended`,
-`mongo_shell`, `elastic_hit`, and `elastic_source`.
+Supported input dialects: `auto`, `json`, `python`, `mongo_extended`, `mongo_shell`, `elastic_hit`, `elastic_source`.
 
-Supported output dialects: `python`, `json`, `mongo_extended`, `mongo_shell`,
-`elastic_hit`, and `elastic_source`.
+Supported output dialects: `python`, `json`, `mongo_extended`, `mongo_shell`, `elastic_hit`, `elastic_source`.
 
 ## CLI
 
@@ -106,147 +103,80 @@ echo '{"name": "Alice", "active": true}' | jtoken stats
 echo '{"name": "Alice", "active": true}' | jtoken count
 ```
 
-Use `-f/--file` to read from a file instead of stdin. `stats` and `count` accept
-`--model` and `--backend` (`auto`, `tiktoken`, `estimate`).
-
-## Nested documents
-
-Nested dicts are flattened with dot notation. Booleans and nulls at any depth
-are collapsed into the same summary lines.
-
-```python
-data = {
-    "title": "Engineer",
-    "metadata": {
-        "verified": True,
-        "sponsored": False,
-        "score": None,
-        "source": {
-            "crawled": True,
-            "enriched": None,
-        },
-    },
-}
-
-print(jtoken.encode(data))
-# title: Engineer
-# trues: metadata.verified,metadata.source.crawled
-# falses: metadata.sponsored
-# nulls: metadata.score,metadata.source.enriched
-```
-
-Decode reconstructs the full nested structure:
-
-```python
-assert jtoken.decode(jtoken.encode(data)) == data  # ✓
-```
-
-**Limitation:** keys cannot contain `.` (reserved for nesting) or `": "`.
-Arrays are not supported.
+Use `-f/--file` for file input. `encode`, `stats`, and `count` accept `--input-format`. `decode` accepts `--output-format` and `--context-in` when restoring non-JSON dialects. `stats` and `count` accept `--model` and `--backend`.
 
 ## Token savings
 
 ```python
 import jtoken
 
-stats = jtoken.token_savings(data)
+stats = jtoken.token_savings(data, model="gpt-4o", backend="tiktoken", json_indent=2)
 print(stats)
 # jtoken: 22 tokens | json: 36 tokens | saved: 14 (38.9%)
 
-n = jtoken.count_tokens(data)  # count jtoken tokens only
+print(stats.jtoken_tokens, stats.json_tokens, stats.saved, stats.percent)
 ```
 
-Savings are compared against `json.dumps(data)` — the standard representation
-you'd paste into a prompt. Savings are highest when a document has many `null`
-or boolean fields.
+`count_tokens` and `count_text_tokens` are also available. Savings compare the jtoken representation against pretty JSON by default (`json_indent=2`).
 
-```python
-# Specify model or encoding
-stats = jtoken.token_savings(data, model="gpt-4o")
-stats = jtoken.token_savings(data, model="o200k_base")
+## API reference
 
-# No tiktoken dependency
-stats = jtoken.token_savings(data, backend="estimate")
-```
+### Package metadata
 
-## API
+- `jtoken.__version__`
+- `jtoken.__author__`
 
-### `encode(data: dict) -> str`
+### Core codec
 
-Compresses a dict into jtoken. Supported value types: `str`, `int`, `float`,
-`bool`, `None`, nested `dict`.
+- `encode(data: dict) -> str`
+- `decode(text: str) -> dict`
+- `dumps` / `loads`
 
-**Summary lines (always at the end):**
+### Normalization
 
-| line | contains |
-|---|---|
-| `trues: k1,k2,...` | all keys whose value is `True` |
-| `falses: k1,k2,...` | all keys whose value is `False` |
-| `nulls: k1,k2,...` | all keys whose value is `None` |
+- `parse_input(text, *, source="auto")`
+- `normalize(data, *, source="auto", context=None) -> tuple[dict, NormalizationContext]`
+- `denormalize(data, *, target="python", context)`
+- `render_output(value, *, target="python") -> str`
+- `encode_document(raw, *, source="auto", context=None) -> tuple[str, NormalizationContext]`
+- `decode_document(text, *, target="python", context)`
 
-String values that would decode ambiguously (look like a number or boolean)
-keep their quotes:
+### Token helpers
 
-```python
-jtoken.encode({"zip": "90210"})  # → 'zip: "90210"'   (string, quotes kept)
-jtoken.encode({"zip":  90210})   # → 'zip: 90210'      (int, no quotes)
-jtoken.encode({"ok": "true"})    # → 'ok: "true"'      (string, quotes kept)
-jtoken.encode({"ok": True})      # → 'trues: ok'       (bool, collapsed)
-```
+- `count_tokens(data, *, model="cl100k_base", backend="auto") -> int`
+- `count_text_tokens(text, *, model="cl100k_base", backend="auto") -> int`
+- `token_savings(data, *, model="cl100k_base", backend="auto", json_indent=2) -> TokenSavings`
 
-Raises `JPackEncodeError` for unsupported types, dots or `": "` in keys, or
-reserved key names (`nulls`, `trues`, `falses`).
+### `TokenSavings`
 
-### `decode(text: str) -> dict`
+- `jtoken_tokens`
+- `json_tokens`
+- `saved`
+- `percent`
 
-Reconstructs the original dict, including nested structure from dot-notation
-keys. Type inference for scalar values:
+### `NormalizationContext`
 
-| value | decoded as |
-|---|---|
-| `"quoted"` | `str` (always) |
-| key in `trues:` line | `True` |
-| key in `falses:` line | `False` |
-| key in `nulls:` line | `None` |
-| integer literal, e.g. `42` | `int` |
-| float literal, e.g. `3.14` | `float` |
-| anything else | `str` |
+- `source_format`
+- `target_format`
+- `typed_values`
+- `lists`
+- `dotted_keys`
+- `elastic`
+- `to_dict()` / `from_dict()`
 
-Raises `JPackDecodeError` for invalid input.
+### Format enums
 
-### `token_savings(data, *, model, backend) -> TokenSavings`
+- `InputFormat`
+- `OutputFormat`
 
-Compares jtoken vs `json.dumps` token usage.
+### Exceptions
 
-```python
-stats.jtoken_tokens   # int
-stats.json_tokens    # int
-stats.saved          # int
-stats.percent        # float
-str(stats)           # "jtoken: 22 tokens | json: 36 tokens | saved: 14 (38.9%)"
-```
-
-### `count_tokens(data, *, model, backend) -> int`
-
-Counts LLM tokens in the jtoken representation. Accepts a dict or an
-already-encoded jtoken string.
-
-**`backend` options:**
-
-| value | behaviour |
-|---|---|
-| `"auto"` (default) | tiktoken if installed, otherwise estimates |
-| `"tiktoken"` | requires tiktoken; raises `TokenCountError` if absent |
-| `"estimate"` | ~4 chars/token heuristic, no extra dependency |
-
-## Exceptions
-
-```
-JPackError
-├── JPackEncodeError
-├── JPackDecodeError
-└── TokenCountError
-```
+- `JPackError`
+- `JPackEncodeError`
+- `JPackDecodeError`
+- `NormalizationError`
+- `DenormalizationError`
+- `TokenCountError`
 
 ## Development
 

@@ -67,6 +67,10 @@ class TestEncode:
         assert encode({"city": "New York"}) == "city: New York"
         assert encode({"email": "a@b.com"}) == "email: a@b.com"
 
+    def test_multiline_string_is_json_quoted(self):
+        text = "line one\nline two"
+        assert encode({"prompt": text}) == 'prompt: "line one\\nline two"'
+
     # Nested dicts
     def test_nested_dict_flat_notation(self):
         result = encode({"meta": {"verified": True}})
@@ -224,6 +228,10 @@ class TestRoundTrip:
 
     def test_empty_dict(self):
         assert decode(encode({})) == {}
+
+    def test_multiline_string_round_trip(self):
+        data = {"prompt": "line one\nline two"}
+        assert decode(encode(data)) == data
 
     def test_nested_dict(self):
         data = {"user": {"name": "Alice", "age": 30}}

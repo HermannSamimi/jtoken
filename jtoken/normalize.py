@@ -13,6 +13,7 @@ _MONGO_SHELL_OBJECT_ID = re.compile(r'ObjectId\(\s*"([0-9a-fA-F]{24})"\s*\)')
 _MONGO_SHELL_ISO_DATE = re.compile(r'ISODate\(\s*"([^"]+)"\s*\)')
 _MONGO_SHELL_NUMBER_INT = re.compile(r"NumberInt\(\s*(-?\d+)\s*\)")
 _MONGO_SHELL_NUMBER_LONG = re.compile(r"NumberLong\(\s*(-?\d+)\s*\)")
+_DOTTED_KEY_MARKER = "__DOT__"
 _MONGO_EXTENDED_KEYS = {
     "$oid",
     "$date",
@@ -29,6 +30,7 @@ class NormalizationContext:
     target_format: str | None = None
     typed_values: dict[str, str] = field(default_factory=dict)
     lists: set[str] = field(default_factory=set)
+    dotted_keys: dict[str, str] = field(default_factory=dict)
     elastic: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,6 +39,7 @@ class NormalizationContext:
             "target_format": self.target_format,
             "typed_values": dict(self.typed_values),
             "lists": sorted(self.lists),
+            "dotted_keys": dict(self.dotted_keys),
             "elastic": self.elastic,
         }
 
@@ -47,6 +50,7 @@ class NormalizationContext:
             target_format=data.get("target_format"),
             typed_values=dict(data.get("typed_values", {})),
             lists=set(data.get("lists", [])),
+            dotted_keys=dict(data.get("dotted_keys", {})),
             elastic=data.get("elastic"),
         )
 
@@ -88,6 +92,7 @@ def normalize(
     working = _prepare_working_document(data, fmt, ctx)
     if fmt in (InputFormat.MONGO_EXTENDED, InputFormat.MONGO_SHELL):
         working = _convert_mongo_extended(working, ctx, "")
+    working = _sanitize_dotted_keys(working, ctx, "")
     normalized = _flatten_lists(working, ctx, "")
     normalized = _coerce_scalars(normalized, ctx, "")
     return normalized, ctx
@@ -264,6 +269,28 @@ def _convert_mongo_extended(
         key: _convert_mongo_extended(child, ctx, _join_path(path, key))
         for key, child in value.items()
     }
+
+
+def _sanitize_dotted_keys(
+    value: Any,
+    ctx: NormalizationContext,
+    path: str,
+) -> Any:
+    if isinstance(value, list):
+        return [
+            _sanitize_dotted_keys(item, ctx, _join_path(path, str(index)))
+            for index, item in enumerate(value)
+        ]
+    if isinstance(value, dict):
+        sanitized: dict[str, Any] = {}
+        for key, child in value.items():
+            safe_key = key.replace(".", _DOTTED_KEY_MARKER) if "." in key else key
+            child_path = _join_path(path, safe_key)
+            if safe_key != key:
+                ctx.dotted_keys[child_path] = key
+            sanitized[safe_key] = _sanitize_dotted_keys(child, ctx, child_path)
+        return sanitized
+    return value
 
 
 def _flatten_lists(
