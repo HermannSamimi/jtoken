@@ -1,6 +1,5 @@
 """jtoken — Compress JSON for LLM prompts with ~30% fewer tokens."""
 
-from ._codec import decode, encode
 from .denormalize import decode_document, denormalize, render_output
 from .exceptions import (
     DenormalizationError,
@@ -22,13 +21,31 @@ from .tokens import (
 __version__ = "0.3.0"
 __author__ = "Hermann Samimi"
 
-# json-style aliases
+
+def encode(data) -> str:
+    """Encode any JSON string, dict, or list to jtoken. Auto-detects dialect."""
+    text, _ = encode_document(data)
+    return text
+
+
+def decode(text: str) -> dict:
+    """Decode jtoken back to a plain JSON dict."""
+    if not isinstance(text, str):
+        raise JPackDecodeError(f"Expected str, got {type(text).__name__}")
+    return decode_document(text, target="json")
+
+
+# aliases
+compress = encode
+decompress = decode
 dumps = encode
 loads = decode
 
 __all__ = [
     "encode",
     "decode",
+    "compress",
+    "decompress",
     "dumps",
     "loads",
     "count_tokens",

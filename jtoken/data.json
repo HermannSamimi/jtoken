@@ -1,169 +1,3067 @@
-data = {
-    "organization": {
-        "id": 7001,
-        "name": "Nexus Corp",
-        "founded": "2001-04-12",
-        "dissolved": None,
-        "active": True,
-        "public": False,
-        "revenue": 4_500_000.75,
-        "employeeCount": 312,
-        "website": "https://nexuscorp.example.com",
-        "tagline": None,
-
-        "headquarters": {
-            "street": "88 Innovation Drive",
-            "city": "Austin",
-            "state": "TX",
-            "country": "US",
-            "postalCode": "78701",
-            "geo": {
-                "lat": 30.2672,
-                "lng": -97.7431,
-                "altitude_m": 149,
-                "verified": True,
-                "lastChecked": "2026-03-01T00:00:00Z",
-            },
+[
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028923"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-11949-17047755-S",
+    "company": "Herbert Handlos GesmbH",
+    "country": "germany",
+    "date_posted": "2026-04-05T07:01:08.818",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=11949-17047755-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Tragwein, Österreich",
+    "scraped_at": {
+      "$date": "2026-04-05T05:10:54.149+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Elektroniker/in - Betriebstechnik",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028953"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-11949-16993441-S",
+    "company": "Böhm Möbel GmbH",
+    "country": "germany",
+    "date_posted": "2026-04-05T17:02:15.23",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=11949-16993441-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Rainbach im Mühlkreis, Österreich",
+    "scraped_at": {
+      "$date": "2026-04-05T17:55:21.812+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Kalkulator/in",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b02895b"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-11949-17072313-S",
+    "company": "Einrichtungshaus Peham",
+    "country": "germany",
+    "date_posted": "2026-04-12T17:03:22.908",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=11949-17072313-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Sankt Johann am Walde, Österreich",
+    "scraped_at": {
+      "$date": "2026-04-12T16:39:56.637+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Tischler/in",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028975"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-11949-17067003-S",
+    "company": "Kaiser von Österreich",
+    "country": "germany",
+    "date_posted": "2026-03-17T17:04:46.194",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=11949-17067003-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Bad Radkersburg, Österreich",
+    "scraped_at": {
+      "$date": "2026-03-17T16:04:30.606+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Koch/Köchin",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028997"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-12287-JOB-823991-S",
+    "company": "bschool Allenbach",
+    "country": "germany",
+    "date_posted": "2026-03-12T17:01:33.014",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12287-JOB-823991-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Hilchenbach, Siegerland, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-12T16:05:21.858+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Betreuungskraft - English oder Deutsch Native Speaker",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b02899f"
+    },
+    "job_id": "aa-14927-rouqxzr2x8-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-05-03T07:17:37.366",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-rouqxzr2x8-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Babenhausen, Hessen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-05-03T05:44:33.276+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Stellvertretende Küchenleitung / Koch (m/w/d) K&S Seniorenr",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b0289b3"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14225-d1da43898c113661-S",
+    "company": "Hamburger Energienetze GmbH",
+    "country": "germany",
+    "date_posted": "2026-04-29T11:42:57.106",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14225-d1da43898c113661-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Hamburg, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-29T09:51:14.301+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Elektroniker (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b0289b7"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14225-ec05bf9c36b873f3-S",
+    "company": "Riverty Group GmbH",
+    "country": "germany",
+    "date_posted": "2026-04-17T07:43:46.73",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14225-ec05bf9c36b873f3-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Berlin, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-17T05:58:13.712+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Informatiker (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b0289b9"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14225-0f3b5414b6063b8d-S",
+    "company": "Riverty Group GmbH",
+    "country": "germany",
+    "date_posted": "2026-03-23T16:44:04.9",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14225-0f3b5414b6063b8d-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Berlin, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-23T16:01:53.389+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Softwareentwickler (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b0289bd"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14225-aa1d82a9b2dc9cd5-S",
+    "company": "Riverty Administration Services GmbH",
+    "country": "germany",
+    "date_posted": "2026-03-09T16:43:35.627",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14225-aa1d82a9b2dc9cd5-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Berlin, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-09T15:59:49.357+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Informatiker (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028a11"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-12982-JS-SAM28388970-S",
+    "company": "KJSH Verbund",
+    "country": "germany",
+    "date_posted": "2026-03-05T16:06:54.654",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12982-JS-SAM28388970-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Berlin, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-05T15:28:00.168+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Erzieher für elternaktivierende Kurzzeit-WG (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028a19"
+    },
+    "job_id": "aa-12982-JF-SAM41268681-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stadt Heilbronn",
+    "country": "germany",
+    "date_posted": "2026-03-03T16:07:38.673",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12982-JF-SAM41268681-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Heilbronn, Neckar, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-03T15:11:31.229+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Staatlich anerkannter Erzieher (m/w/d) für das Quartierszen",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028a1b"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-12982-JF-SAM41268680-S",
+    "company": "Stadt Heilbronn",
+    "country": "germany",
+    "date_posted": "2026-03-03T16:07:38.599",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12982-JF-SAM41268680-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Heilbronn, Neckar, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-03T15:11:31.229+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Mitarbeiter (m/w/d) für die offene Kinder- und Jugendarbeit",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028a27"
+    },
+    "job_id": "aa-12982-JF-SAM38899388-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stadt Zossen",
+    "country": "germany",
+    "date_posted": "2026-03-03T16:07:38.504",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12982-JF-SAM38899388-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Zossen bei Berlin, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-03T15:11:31.229+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "staatlich anerkannte Erzieher*innen (m/w/d) in der Stadt Zos",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028a2b"
+    },
+    "job_id": "aa-16339-JS-BAX28393443-S",
+    "data_source": "arbeitsagentur",
+    "company": "Dr. Becker Klinikgesellschaft SE & Co. KG / Klinik Norddeihc",
+    "country": "germany",
+    "date_posted": "2026-03-04T11:28:34.144",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=16339-JS-BAX28393443-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Norden, Ostfriesland, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-04T10:37:57.132+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Sozialarbeiter für Rehabilitation (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "6991f215be03f1310b028a2d"
+    },
+    "job_id": "aa-16339-JS-BAX28383503-S",
+    "data_source": "arbeitsagentur",
+    "company": "merTens AG",
+    "country": "germany",
+    "date_posted": "2026-03-04T11:28:34.004",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=16339-JS-BAX28383503-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Wiesbaden, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-04T10:37:57.132+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Vertriebsassistenz im Support (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699beda80fe9480105ceecbc"
+    },
+    "job_id": "aa-12511-2025X0000049766-S",
+    "data_source": "arbeitsagentur",
+    "company": "Die Jugendherbergen in Rheinland-Pfalz  und im Saarland (Zentrale)",
+    "country": "germany",
+    "date_posted": "2026-04-22T07:05:04.569",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12511-2025X0000049766-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Idar-Oberstein, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-22T05:20:26.264+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Rezeptionist (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699beda80fe9480105ceecc0"
+    },
+    "job_id": "aa-12511-2025X0000049768-S",
+    "data_source": "arbeitsagentur",
+    "company": "Die Jugendherbergen in Rheinland-Pfalz  und im Saarland (Zentrale)",
+    "country": "germany",
+    "date_posted": "2026-03-27T07:03:09.882",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12511-2025X0000049768-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Idar-Oberstein, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-27T06:10:01.200+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Koch (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699beda80fe9480105ceecc4"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-12511-2025X0000048639-S",
+    "company": "pro-beam systems GmbH",
+    "country": "germany",
+    "date_posted": "2026-04-21T07:01:24.613",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=12511-2025X0000048639-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Niederdorf bei Stollberg, Erzgebirge, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-21T05:01:55.322+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Technischer Redakteur (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef433"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-125koct8m71-S",
+    "company": "Eberspächer Gruppe GmbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:07:04.822",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-125koct8m71-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Esslingen am Neckar, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Senior Expert (m/w/d) Global Controlling | Processes & Syste",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef435"
+    },
+    "job_id": "aa-14927-1b3ymbb79w9-S",
+    "data_source": "arbeitsagentur",
+    "company": "Eberspächer Gruppe GmbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:27.609",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-1b3ymbb79w9-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Esslingen am Neckar, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Director (m/w/d) BU Controlling Planning & Reporting",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef437"
+    },
+    "job_id": "aa-14927-2hvu7cdc54h-S",
+    "data_source": "arbeitsagentur",
+    "company": "Eberspächer Gruppe GmbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:34.823",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-2hvu7cdc54h-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Wilsdruff, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Ingenieur Supplier Quality",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef439"
+    },
+    "job_id": "aa-14927-zm7utkuvh-S",
+    "data_source": "arbeitsagentur",
+    "company": "mömax Deutschland GmbH",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:07:04.198",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-zm7utkuvh-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Nürnberg, Mittelfranken, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Abteilungsleiter Wohnaccessoires (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef43b"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-b4mg1u-S",
+    "company": "HEINE Optotechnik GmbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:33.712",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-b4mg1u-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Gilching, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Mitarbeiter Montage / Montagehelfer - Medizinische Instrumen",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef43f"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-24p4pygjydk-S",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.95",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-24p4pygjydk-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Darmstadt, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Dauernachtwache / Nachtdienst – Gesundheits- und Krankenpf",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef441"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-23zmgfheggs-S",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:26.405",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-23zmgfheggs-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Jugenheim in Rheinhessen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Pädagoge / Erzieher / Sozialarbeiter Ambulante Teilhabe (m/",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef443"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-duysg1-S",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:33.018",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-duysg1-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Zwingenberg, Bergstraße, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Heilerziehungspfleger / Erzieher / Pädagoge / Pflegefachkra",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef445"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-dywwd2-S",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.832",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dywwd2-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Groß-Gerau, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Sozialarbeiter / Erzieher / Heilerziehungspfleger - WG Kinde",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef449"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-22uka1bkx6m-S",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.749",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-22uka1bkx6m-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Mörfelden-Walldorf, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Teilhabeassistent*in / Schulbegleiter* / THA (m/w/d) päd. F",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef44b"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-24o8bbzvr5n-S",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.578",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-24o8bbzvr5n-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Mühltal, Hessen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Erzieher / Pädagoge / Heilerziehungspfleger / Pfleger - pä",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef44d"
+    },
+    "job_id": "aa-14927-dxpotm-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.353",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dxpotm-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Darmstadt, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Nachtwache – Erzieher / Heilerziehungspfleger / pädagogis",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef44f"
+    },
+    "job_id": "aa-14927-g2l3kq7uds-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:25.073",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-g2l3kq7uds-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Mühltal, Hessen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Werkstattleitung Hessen – Teilhabe am Arbeitsleben (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef451"
+    },
+    "job_id": "aa-14927-dubcsy-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.431",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dubcsy-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Mühltal, Hessen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Heilerziehungspfleger / Erzieher / Pädagoge / Pflegefachkra",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef453"
+    },
+    "job_id": "aa-14927-dv1zz8-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:24.702",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dv1zz8-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Bad Krozingen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Wochenendhelfer – Wiedereinsteiger / Rentner / Eltern in E",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef455"
+    },
+    "job_id": "aa-14927-dxcxua-S",
+    "data_source": "arbeitsagentur",
+    "company": "Stiftung Nieder-Ramstädter Diakonie",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:24.88",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dxcxua-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Mühltal, Hessen, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Heilerziehungspfleger / Erzieher / Sozialpädagoge (m/w/d) a",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef457"
+    },
+    "job_id": "aa-14927-5jpwah-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:31.843",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-5jpwah-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Zwickau, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Alltagsbegleiter / Betreuungsassistent (m/w/d) K&S Seniorenr",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef459"
+    },
+    "job_id": "aa-14927-2352-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:31.735",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-2352-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Zirndorf, Mittelfranken, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Pflegefachkraft Nachtdienst (w/m/d) Altenpflege K&S Senioren",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef45b"
+    },
+    "job_id": "aa-14927-2erd41qra61-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:07:00.673",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-2erd41qra61-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Raunheim, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Pflegedienstleitung (m/w/d) Altenpflege K&S Seniorenresidenz",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef45d"
+    },
+    "job_id": "aa-14927-10ug2l82t2u-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:24.327",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-10ug2l82t2u-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Grimma, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Wohnbereichsleitung (w/m/d) K&S Seniorenresidenz Grimma - Ha",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef45f"
+    },
+    "job_id": "aa-14927-j4w0qxcvo0-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:32.062",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-j4w0qxcvo0-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Zwickau, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Stellvertretende Pflegedienstleitung / Pflegefachkraft K&S S",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef461"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-17t6kdrxos4-S",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:07:00.956",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-17t6kdrxos4-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Sottrum, Kreis Rotenburg, Wümme, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Sachbearbeitung Heimkostenabrechnung (m/w/d) K&S Gruppe | Ze",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef463"
+    },
+    "job_id": "aa-14927-2c7bg92qfh2-S",
+    "data_source": "arbeitsagentur",
+    "company": "K&S - Dr. Krantz Sozialbau und Betreuung SE & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-04-19T07:28:31.957",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-2c7bg92qfh2-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Eilenburg, Deutschland",
+    "scraped_at": {
+      "$date": "2026-04-19T05:55:41.232+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Pflegefachkraft - Stellvertretende Wohnbereichleitung (w/m/d",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef46b"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-272qj5v9j8f-S",
+    "company": "Kliniken Frankfurt-Main-Taunus GmbH",
+    "country": "germany",
+    "date_posted": "2026-03-02T15:02:18.421",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-272qj5v9j8f-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Bad Soden am Taunus, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-02T14:03:02.423+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Pflegefachkraft – internistische Patientenversorgung (m/w/",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef475"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-ndoqxtepte-S",
+    "company": "Kliniken Frankfurt-Main-Taunus GmbH",
+    "country": "germany",
+    "date_posted": "2026-03-02T15:02:18.352",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-ndoqxtepte-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Frankfurt am Main, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-02T14:03:02.423+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Sozialarbeiter:in (m/w/d) - Teilzeit 50%",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": true
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef4fb"
+    },
+    "job_id": "aa-14927-19x3qzt5tln-S",
+    "data_source": "arbeitsagentur",
+    "company": "Bartels-Langness Handelsgesellschaft mbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:06:59.192",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-19x3qzt5tln-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Kiel, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "HR Business Partner (m/w/d) Einzelhandel",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef4ff"
+    },
+    "job_id": "aa-14927-lnils6593w-S",
+    "data_source": "arbeitsagentur",
+    "company": "Bartels-Langness Handelsgesellschaft mbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:22.656",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-lnils6593w-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Kiel, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Verkäufer (m/w/d) mit Kassiertätigkeit Bereich Food",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef501"
+    },
+    "job_id": "aa-14927-1fxebefafrf-S",
+    "data_source": "arbeitsagentur",
+    "company": "Bartels-Langness Handelsgesellschaft mbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-06T07:06:22.592",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-1fxebefafrf-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Kiel, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-06T06:12:52.655+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Kaufmännische Sachbearbeitung (m/w/d) Facility Management",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef503"
+    },
+    "job_id": "aa-14927-dyzssn-S",
+    "data_source": "arbeitsagentur",
+    "company": "Bartels-Langness Handelsgesellschaft mbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:06:58.936",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dyzssn-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Kiel, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "HR Business Partner (m/w/d)",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef505"
+    },
+    "job_id": "aa-14927-dwp82r-S",
+    "data_source": "arbeitsagentur",
+    "company": "Bartels-Langness Handelsgesellschaft mbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:06:58.748",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-dwp82r-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Heide, Holstein, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Aushilfe (m/w/d) Käse- / Backshop als Midijob",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_id": {
+      "$oid": "699bf0030fe9480105cef507"
+    },
+    "data_source": "arbeitsagentur",
+    "job_id": "aa-14927-2icmb41aip0-S",
+    "company": "Bartels-Langness Handelsgesellschaft mbH & Co. KG",
+    "country": "germany",
+    "date_posted": "2026-03-28T07:06:58.439",
+    "description": null,
+    "emails": null,
+    "is_remote": false,
+    "job_url": "https://www.arbeitsagentur.de/jobsuche/suche?id=14927-2icmb41aip0-S&angebotsart=1",
+    "job_url_direct": null,
+    "language": "de",
+    "location": "Celle, Deutschland",
+    "scraped_at": {
+      "$date": "2026-03-28T06:58:55.675+0000"
+    },
+    "site": "arbeitsagentur",
+    "skills": null,
+    "title": "Verkäufer mit Kassiertätigkeit (m/w/d) Obst & Gemüse",
+    "Academic": false,
+    "Research": false,
+    "Remote": false,
+    "Freelancer": false,
+    "B2B": false,
+    "PartTime": false
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.04.15-015424",
+    "_id": "E9RQkp0BZGKsHgl8rWae",
+    "_score": 23.526459,
+    "_ignored": [
+      "process.parent.command_line",
+      "process.parent.command_line.caseless"
+    ],
+    "_source": {
+      "agent": {
+        "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "PHVhF8uc4ejc8vY5aT1fqA",
+            "HPe7Jpl8uHBzgZzwl9mB/w",
+            "M9ngQq1u0plDJbeFGyqajg",
+            "5fpeJ5m0UqmycmYbQoqFCg"
+          ],
+          "effective_parent": {
+            "name": "Code",
+            "pid": 2915,
+            "entity_id": "HPe7Jpl8uHBzgZzwl9mB/w",
+            "executable": "/Applications/Visual Studio Code.app/Contents/MacOS/Code"
+          }
         },
-
-        "departments": [
-            {
-                "deptId": "DEPT-ENG",
-                "name": "Engineering",
-                "headCount": 120,
-                "remote": True,
-                "budget": 1_200_000.00,
-                "managerId": "USR-0042",
-                "parentDept": None,
-                "tags": ["backend", "infra", "ml"],
-                "kpis": {
-                    "deployFrequency": "daily",
-                    "avgLeadTimeDays": 3.5,
-                    "changeFailureRate": 0.02,
-                    "onCallActive": True,
-                    "incidentCount": 7,
-                    "lastIncident": "2026-04-29T03:12:00Z",
-                    "slaBreached": False,
-                },
-                "teams": [
-                    {
-                        "teamId": "TEAM-CORE",
-                        "name": "Core Platform",
-                        "size": 8,
-                        "lead": "Alice Nakamura",
-                        "stack": ["Python", "Go", "PostgreSQL"],
-                        "activeSprintId": "SPR-2026-19",
-                        "velocity": 42,
-                        "archived": False,
-                    },
-                    {
-                        "teamId": "TEAM-ML",
-                        "name": "Machine Learning",
-                        "size": 5,
-                        "lead": None,
-                        "stack": ["Python", "PyTorch", "CUDA"],
-                        "activeSprintId": None,
-                        "velocity": 0,
-                        "archived": False,
-                    },
-                ],
-            },
-            {
-                "deptId": "DEPT-OPS",
-                "name": "Operations",
-                "headCount": 45,
-                "remote": False,
-                "budget": 620_000.00,
-                "managerId": "USR-0017",
-                "parentDept": None,
-                "tags": ["logistics", "support"],
-                "kpis": {
-                    "ticketsClosedMonthly": 980,
-                    "avgResolutionHrs": 4.2,
-                    "customerSatisfaction": 4.7,
-                    "escalationRate": 0.05,
-                    "slaBreached": False,
-                    "lastIncident": None,
-                },
-                "teams": [],
-            },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "com.microsoft.VSCode.helper",
+            "trusted": true,
+            "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+            "exists": true,
+            "team_id": "UBF8T346G9",
+            "status": "No error."
+          },
+          "name": "Code Helper (Plugin)",
+          "pid": 3000,
+          "args_count": 0,
+          "entity_id": "PHVhF8uc4ejc8vY5aT1fqA",
+          "command_line": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/Users/snow/Library/Application Support/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,995646960663677317,9773455431832305004,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,LocalNetworkAccessChecks,MacWebContentsOcclusion,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --trace-process-track-uuid=3190709023793545454",
+          "executable": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+        },
+        "group_leader": {
+          "pid": 2915
+        },
+        "pid": 24031,
+        "entity_id": "ohoSAYz3dfTVZIo/uvW/8w",
+        "executable": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+        "args": [
+          "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+          "--hidden",
+          "--no-require-git",
+          "--case-sensitive",
+          "--glob-case-insensitive",
+          "--ignore-file-case-insensitive",
+          "-g",
+          "!**/.svn",
+          "-g",
+          "!**/.hg",
+          "-g",
+          "!**/.DS_Store",
+          "-g",
+          "!**/Thumbs.db",
+          "-g",
+          "!/",
+          "-g",
+          "!**/node_modules",
+          "-g",
+          "!**/bower_components",
+          "-g",
+          "!**/*.code-search",
+          "--no-ignore-parent",
+          "--follow",
+          "--crlf",
+          "--fixed-strings",
+          "--no-config",
+          "--no-ignore-global",
+          "--json",
+          "--",
+          "action_id",
+          "."
         ],
-
-        "auditLog": [
-            {
-                "eventId": "EVT-001",
-                "action": "ORG_CREATED",
-                "performedBy": "USR-0001",
-                "timestamp": "2001-04-12T09:00:00Z",
-                "ipAddress": "192.168.1.1",
-                "success": True,
-                "errorCode": None,
-                "meta": {},
-            },
-            {
-                "eventId": "EVT-419",
-                "action": "DEPT_BUDGET_UPDATE",
-                "performedBy": "USR-0042",
-                "timestamp": "2026-05-01T11:30:00+02:00",
-                "ipAddress": "10.0.0.55",
-                "success": False,
-                "errorCode": "PERMISSION_DENIED",
-                "meta": {
-                    "attemptedValue": 2_000_000,
-                    "currentValue": 1_200_000,
-                    "delta": 800_000,
-                    "requiresApproval": True,
-                    "approvedBy": None,
-                    "approvedAt": None,
-                },
-            },
+        "session_leader": {
+          "pid": 1
+        },
+        "code_signature": {
+          "signing_id": "rg",
+          "trusted": true,
+          "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+          "exists": true,
+          "team_id": "UBF8T346G9",
+          "status": "No error."
+        },
+        "name": "rg",
+        "args_count": 32,
+        "command_line": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg --hidden --no-require-git --case-sensitive --glob-case-insensitive --ignore-file-case-insensitive -g !**/.svn -g !**/.hg -g !**/.DS_Store -g !**/Thumbs.db -g !/ -g !**/node_modules -g !**/bower_components -g !**/*.code-search --no-ignore-parent --follow --crlf --fixed-strings --no-config --no-ignore-global --json -- action_id .",
+        "hash": {
+          "sha1": "3359baf47037d715e1a6203cf0add720eb2b5de9",
+          "sha256": "7cbd9525786c7b23d66418bdf8bcb23334aaa4b91cd1c857f6ca6dde49815828",
+          "md5": "48797d84500593268f592d012d21ef88"
+        }
+      },
+      "@timestamp": "2026-04-15T18:04:02.950226Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd"
+        }
+      },
+      "host": {
+        "hostname": "PF00S3I",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:15 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T6000",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.3",
+          "platform": "macos",
+          "full": "macOS 26.3"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.153",
+          "fe80::c3d:5585:b34f:4850",
+          "fde9:1668:9e37:0:1853:2b07:a2e9:c8",
+          "fe80::c050:5eff:fe66:492d",
+          "fe80::5945:27dd:1574:295d",
+          "fe80::4459:baa6:36a9:3926",
+          "fe80::8ca3:4a51:8a1:a7e6",
+          "fe80::ce81:b1c:bd2c:69e",
+          "10.113.144.102"
         ],
-
-        "settings": {
-            "locale": "en-US",
-            "timezone": "America/Chicago",
-            "currency": "USD",
-            "fiscalYearStart": "01-01",
-            "mfaRequired": True,
-            "ssoEnabled": False,
-            "ssoProvider": None,
-            "allowedDomains": ["nexuscorp.example.com", "nexus.internal"],
-            "blockedIPs": [],
-            "retentionDays": 365,
-            "notifications": {
-                "email": True,
-                "slack": True,
-                "sms": False,
-                "webhookUrl": "https://hooks.example.com/nexus",
-                "webhookSecret": None,
-                "digest": {
-                    "enabled": True,
-                    "frequency": "weekly",
-                    "day": "Monday",
-                    "time": "08:00",
-                    "lastSentAt": "2026-05-04T08:00:00Z",
-                    "nextScheduledAt": "2026-05-11T08:00:00Z",
-                    "failedAttempts": 0,
-                    "paused": False,
-                },
-            },
+        "name": "pf00s3i",
+        "id": "018AD229-D5A0-5151-B802-95CBEAF0D60E",
+        "mac": [
+          "ca-ed-f0-90-09-34",
+          "ca-ed-f0-90-09-35",
+          "ca-ed-f0-90-09-36",
+          "ca-ed-f0-90-09-14",
+          "ca-ed-f0-90-09-15",
+          "ca-ed-f0-90-09-16",
+          "36-74-72-5d-8b-00",
+          "36-74-72-5d-8b-04",
+          "36-74-72-5d-8b-08",
+          "ae-aa-67-f5-e1-e7",
+          "bc-d0-74-3e-35-cc",
+          "c2-50-5e-66-49-2d"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 30179992,
+        "ingested": "2026-04-15T18:04:14Z",
+        "created": "2026-04-15T18:04:02.950226Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "exec"
+        ],
+        "id": "OQkOk6YMaiMwtI8k+++1AAqF",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "start"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "snow",
+            "id": 501
+          }
         },
-
-        "metrics": {
-            "uptime": 99.97,
-            "requestsPerDay": 1_482_903,
-            "errorRate": 0.003,
-            "p50LatencyMs": 12,
-            "p95LatencyMs": 88,
-            "p99LatencyMs": 210,
-            "degraded": False,
-            "lastDowntime": "2025-09-14T02:11:00Z",
-            "maintenanceWindow": None,
-            "regions": {
-                "us-east-1": {"healthy": True, "load": 0.61, "instances": 4},
-                "eu-west-1": {"healthy": True, "load": 0.44, "instances": 2},
-                "ap-southeast-1": {"healthy": False, "load": None, "instances": 0},
-            },
+        "name": "snow",
+        "id": 501
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
         },
+        "name": "staff",
+        "id": 20
+      }
     }
-}
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.04.15-015424",
+    "_id": "ItRQkp0BZGKsHgl8rWae",
+    "_score": 23.526459,
+    "_ignored": [
+      "process.parent.command_line",
+      "process.parent.command_line.caseless"
+    ],
+    "_source": {
+      "agent": {
+        "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "PHVhF8uc4ejc8vY5aT1fqA",
+            "HPe7Jpl8uHBzgZzwl9mB/w",
+            "M9ngQq1u0plDJbeFGyqajg",
+            "5fpeJ5m0UqmycmYbQoqFCg"
+          ],
+          "effective_parent": {
+            "pid": 2915
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "com.microsoft.VSCode.helper",
+            "trusted": true,
+            "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+            "exists": true,
+            "team_id": "UBF8T346G9",
+            "status": "No error."
+          },
+          "name": "Code Helper (Plugin)",
+          "pid": 3000,
+          "args_count": 0,
+          "entity_id": "PHVhF8uc4ejc8vY5aT1fqA",
+          "command_line": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/Users/snow/Library/Application Support/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,995646960663677317,9773455431832305004,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,LocalNetworkAccessChecks,MacWebContentsOcclusion,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --trace-process-track-uuid=3190709023793545454",
+          "executable": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+        },
+        "group_leader": {
+          "pid": 2915
+        },
+        "pid": 24031,
+        "entity_id": "ohoSAYz3dfTVZIo/uvW/8w",
+        "executable": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+        "args": [
+          "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+          "--hidden",
+          "--no-require-git",
+          "--case-sensitive",
+          "--glob-case-insensitive",
+          "--ignore-file-case-insensitive",
+          "-g",
+          "!**/.svn",
+          "-g",
+          "!**/.hg",
+          "-g",
+          "!**/.DS_Store",
+          "-g",
+          "!**/Thumbs.db",
+          "-g",
+          "!/",
+          "-g",
+          "!**/node_modules",
+          "-g",
+          "!**/bower_components",
+          "-g",
+          "!**/*.code-search",
+          "--no-ignore-parent",
+          "--follow",
+          "--crlf",
+          "--fixed-strings",
+          "--no-config",
+          "--no-ignore-global",
+          "--json",
+          "--",
+          "action_id",
+          "."
+        ],
+        "session_leader": {
+          "pid": 1
+        },
+        "code_signature": {
+          "signing_id": "rg",
+          "trusted": true,
+          "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+          "exists": true,
+          "team_id": "UBF8T346G9",
+          "status": "No error."
+        },
+        "name": "rg",
+        "args_count": 32,
+        "command_line": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg --hidden --no-require-git --case-sensitive --glob-case-insensitive --ignore-file-case-insensitive -g !**/.svn -g !**/.hg -g !**/.DS_Store -g !**/Thumbs.db -g !/ -g !**/node_modules -g !**/bower_components -g !**/*.code-search --no-ignore-parent --follow --crlf --fixed-strings --no-config --no-ignore-global --json -- action_id .",
+        "hash": {
+          "sha1": "3359baf47037d715e1a6203cf0add720eb2b5de9",
+          "sha256": "7cbd9525786c7b23d66418bdf8bcb23334aaa4b91cd1c857f6ca6dde49815828",
+          "md5": "48797d84500593268f592d012d21ef88"
+        }
+      },
+      "@timestamp": "2026-04-15T18:04:03.115486Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd"
+        }
+      },
+      "host": {
+        "hostname": "PF00S3I",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:15 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T6000",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.3",
+          "platform": "macos",
+          "full": "macOS 26.3"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.153",
+          "fe80::c3d:5585:b34f:4850",
+          "fde9:1668:9e37:0:1853:2b07:a2e9:c8",
+          "fe80::c050:5eff:fe66:492d",
+          "fe80::5945:27dd:1574:295d",
+          "fe80::4459:baa6:36a9:3926",
+          "fe80::8ca3:4a51:8a1:a7e6",
+          "fe80::ce81:b1c:bd2c:69e",
+          "10.113.144.102"
+        ],
+        "name": "pf00s3i",
+        "id": "018AD229-D5A0-5151-B802-95CBEAF0D60E",
+        "mac": [
+          "ca-ed-f0-90-09-34",
+          "ca-ed-f0-90-09-35",
+          "ca-ed-f0-90-09-36",
+          "ca-ed-f0-90-09-14",
+          "ca-ed-f0-90-09-15",
+          "ca-ed-f0-90-09-16",
+          "36-74-72-5d-8b-00",
+          "36-74-72-5d-8b-04",
+          "36-74-72-5d-8b-08",
+          "ae-aa-67-f5-e1-e7",
+          "bc-d0-74-3e-35-cc",
+          "c2-50-5e-66-49-2d"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 30180137,
+        "ingested": "2026-04-15T18:04:14Z",
+        "created": "2026-04-15T18:04:03.115486Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "end"
+        ],
+        "id": "OQkOk6YMaiMwtI8k+++1AAs9",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "end"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "snow",
+            "id": 501
+          }
+        },
+        "name": "snow",
+        "id": 501
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.04.15-015425",
+    "_id": "PVNfkp0BRgX9TCYRe6_6",
+    "_score": 22.522026,
+    "_ignored": [
+      "process.parent.command_line",
+      "process.parent.command_line.caseless"
+    ],
+    "_source": {
+      "agent": {
+        "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "WA0J3XJCGQ9yTilH0rQ6fQ",
+            "HPe7Jpl8uHBzgZzwl9mB/w",
+            "M9ngQq1u0plDJbeFGyqajg",
+            "5fpeJ5m0UqmycmYbQoqFCg"
+          ],
+          "effective_parent": {
+            "name": "Code",
+            "pid": 2915,
+            "entity_id": "HPe7Jpl8uHBzgZzwl9mB/w",
+            "executable": "/Applications/Visual Studio Code.app/Contents/MacOS/Code"
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "com.microsoft.VSCode.helper",
+            "trusted": true,
+            "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+            "exists": true,
+            "team_id": "UBF8T346G9",
+            "status": "No error."
+          },
+          "name": "Code Helper (Plugin)",
+          "pid": 2978,
+          "args_count": 0,
+          "entity_id": "WA0J3XJCGQ9yTilH0rQ6fQ",
+          "command_line": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/Users/snow/Library/Application Support/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,995646960663677317,9773455431832305004,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,LocalNetworkAccessChecks,MacWebContentsOcclusion,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --trace-process-track-uuid=3190709003178624776",
+          "executable": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+        },
+        "group_leader": {
+          "pid": 2915
+        },
+        "pid": 25340,
+        "entity_id": "kS1Y5/bQO/aGw59ltXNszg",
+        "executable": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+        "args": [
+          "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+          "--hidden",
+          "--no-require-git",
+          "--ignore-case",
+          "--glob-case-insensitive",
+          "--ignore-file-case-insensitive",
+          "-g",
+          "!**/.svn",
+          "-g",
+          "!**/.hg",
+          "-g",
+          "!**/.DS_Store",
+          "-g",
+          "!**/Thumbs.db",
+          "-g",
+          "!/",
+          "-g",
+          "!**/node_modules",
+          "-g",
+          "!**/bower_components",
+          "-g",
+          "!**/*.code-search",
+          "--no-ignore-parent",
+          "--follow",
+          "--crlf",
+          "--fixed-strings",
+          "--no-config",
+          "--no-ignore-global",
+          "--json",
+          "--",
+          "action_id",
+          "."
+        ],
+        "session_leader": {
+          "pid": 1
+        },
+        "code_signature": {
+          "signing_id": "rg",
+          "trusted": true,
+          "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+          "exists": true,
+          "team_id": "UBF8T346G9",
+          "status": "No error."
+        },
+        "name": "rg",
+        "args_count": 32,
+        "command_line": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg --hidden --no-require-git --ignore-case --glob-case-insensitive --ignore-file-case-insensitive -g !**/.svn -g !**/.hg -g !**/.DS_Store -g !**/Thumbs.db -g !/ -g !**/node_modules -g !**/bower_components -g !**/*.code-search --no-ignore-parent --follow --crlf --fixed-strings --no-config --no-ignore-global --json -- action_id .",
+        "hash": {
+          "sha1": "3359baf47037d715e1a6203cf0add720eb2b5de9",
+          "sha256": "7cbd9525786c7b23d66418bdf8bcb23334aaa4b91cd1c857f6ca6dde49815828",
+          "md5": "48797d84500593268f592d012d21ef88"
+        }
+      },
+      "@timestamp": "2026-04-15T18:19:58.538329Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd"
+        }
+      },
+      "host": {
+        "hostname": "PF00S3I",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:15 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T6000",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.3",
+          "platform": "macos",
+          "full": "macOS 26.3"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.153",
+          "fe80::c3d:5585:b34f:4850",
+          "fde9:1668:9e37:0:1853:2b07:a2e9:c8",
+          "fe80::c050:5eff:fe66:492d",
+          "fe80::5945:27dd:1574:295d",
+          "fe80::4459:baa6:36a9:3926",
+          "fe80::8ca3:4a51:8a1:a7e6",
+          "fe80::ce81:b1c:bd2c:69e",
+          "10.113.144.102"
+        ],
+        "name": "pf00s3i",
+        "id": "018AD229-D5A0-5151-B802-95CBEAF0D60E",
+        "mac": [
+          "ca-ed-f0-90-09-34",
+          "ca-ed-f0-90-09-35",
+          "ca-ed-f0-90-09-36",
+          "ca-ed-f0-90-09-14",
+          "ca-ed-f0-90-09-15",
+          "ca-ed-f0-90-09-16",
+          "36-74-72-5d-8b-00",
+          "36-74-72-5d-8b-04",
+          "36-74-72-5d-8b-08",
+          "ae-aa-67-f5-e1-e7",
+          "bc-d0-74-3e-35-cc",
+          "c2-50-5e-66-49-2d"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 30241520,
+        "ingested": "2026-04-15T18:20:24Z",
+        "created": "2026-04-15T18:19:58.538329Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "exec"
+        ],
+        "id": "OQkOk6YMaiMwtI8k+++1Acq1",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "start"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "snow",
+            "id": 501
+          }
+        },
+        "name": "snow",
+        "id": 501
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.04.15-015425",
+    "_id": "PlNfkp0BRgX9TCYRe6_6",
+    "_score": 22.522026,
+    "_ignored": [
+      "process.parent.command_line",
+      "process.parent.command_line.caseless"
+    ],
+    "_source": {
+      "agent": {
+        "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "WA0J3XJCGQ9yTilH0rQ6fQ",
+            "HPe7Jpl8uHBzgZzwl9mB/w",
+            "M9ngQq1u0plDJbeFGyqajg",
+            "5fpeJ5m0UqmycmYbQoqFCg"
+          ],
+          "effective_parent": {
+            "pid": 2915
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "com.microsoft.VSCode.helper",
+            "trusted": true,
+            "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+            "exists": true,
+            "team_id": "UBF8T346G9",
+            "status": "No error."
+          },
+          "name": "Code Helper (Plugin)",
+          "pid": 2978,
+          "args_count": 0,
+          "entity_id": "WA0J3XJCGQ9yTilH0rQ6fQ",
+          "command_line": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/Users/snow/Library/Application Support/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,995646960663677317,9773455431832305004,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,LocalNetworkAccessChecks,MacWebContentsOcclusion,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --trace-process-track-uuid=3190709003178624776",
+          "executable": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+        },
+        "group_leader": {
+          "pid": 2915
+        },
+        "pid": 25340,
+        "entity_id": "kS1Y5/bQO/aGw59ltXNszg",
+        "executable": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+        "args": [
+          "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+          "--hidden",
+          "--no-require-git",
+          "--ignore-case",
+          "--glob-case-insensitive",
+          "--ignore-file-case-insensitive",
+          "-g",
+          "!**/.svn",
+          "-g",
+          "!**/.hg",
+          "-g",
+          "!**/.DS_Store",
+          "-g",
+          "!**/Thumbs.db",
+          "-g",
+          "!/",
+          "-g",
+          "!**/node_modules",
+          "-g",
+          "!**/bower_components",
+          "-g",
+          "!**/*.code-search",
+          "--no-ignore-parent",
+          "--follow",
+          "--crlf",
+          "--fixed-strings",
+          "--no-config",
+          "--no-ignore-global",
+          "--json",
+          "--",
+          "action_id",
+          "."
+        ],
+        "session_leader": {
+          "pid": 1
+        },
+        "code_signature": {
+          "signing_id": "rg",
+          "trusted": true,
+          "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+          "exists": true,
+          "team_id": "UBF8T346G9",
+          "status": "No error."
+        },
+        "name": "rg",
+        "args_count": 32,
+        "command_line": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg --hidden --no-require-git --ignore-case --glob-case-insensitive --ignore-file-case-insensitive -g !**/.svn -g !**/.hg -g !**/.DS_Store -g !**/Thumbs.db -g !/ -g !**/node_modules -g !**/bower_components -g !**/*.code-search --no-ignore-parent --follow --crlf --fixed-strings --no-config --no-ignore-global --json -- action_id .",
+        "hash": {
+          "sha1": "3359baf47037d715e1a6203cf0add720eb2b5de9",
+          "sha256": "7cbd9525786c7b23d66418bdf8bcb23334aaa4b91cd1c857f6ca6dde49815828",
+          "md5": "48797d84500593268f592d012d21ef88"
+        }
+      },
+      "@timestamp": "2026-04-15T18:19:59.474168Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd"
+        }
+      },
+      "host": {
+        "hostname": "PF00S3I",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:15 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T6000",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.3",
+          "platform": "macos",
+          "full": "macOS 26.3"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.153",
+          "fe80::c3d:5585:b34f:4850",
+          "fde9:1668:9e37:0:1853:2b07:a2e9:c8",
+          "fe80::c050:5eff:fe66:492d",
+          "fe80::5945:27dd:1574:295d",
+          "fe80::4459:baa6:36a9:3926",
+          "fe80::8ca3:4a51:8a1:a7e6",
+          "fe80::ce81:b1c:bd2c:69e",
+          "10.113.144.102"
+        ],
+        "name": "pf00s3i",
+        "id": "018AD229-D5A0-5151-B802-95CBEAF0D60E",
+        "mac": [
+          "ca-ed-f0-90-09-34",
+          "ca-ed-f0-90-09-35",
+          "ca-ed-f0-90-09-36",
+          "ca-ed-f0-90-09-14",
+          "ca-ed-f0-90-09-15",
+          "ca-ed-f0-90-09-16",
+          "36-74-72-5d-8b-00",
+          "36-74-72-5d-8b-04",
+          "36-74-72-5d-8b-08",
+          "ae-aa-67-f5-e1-e7",
+          "bc-d0-74-3e-35-cc",
+          "c2-50-5e-66-49-2d"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 30241527,
+        "ingested": "2026-04-15T18:20:24Z",
+        "created": "2026-04-15T18:19:59.474168Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "end"
+        ],
+        "id": "OQkOk6YMaiMwtI8k+++1AcqD",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "end"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "snow",
+            "id": 501
+          }
+        },
+        "name": "snow",
+        "id": 501
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.04.15-015425",
+    "_id": "alNfkp0BRgX9TCYRe6_6",
+    "_score": 22.522026,
+    "_ignored": [
+      "process.parent.command_line",
+      "process.parent.command_line.caseless"
+    ],
+    "_source": {
+      "agent": {
+        "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "PHVhF8uc4ejc8vY5aT1fqA",
+            "HPe7Jpl8uHBzgZzwl9mB/w",
+            "M9ngQq1u0plDJbeFGyqajg",
+            "5fpeJ5m0UqmycmYbQoqFCg"
+          ],
+          "effective_parent": {
+            "name": "Code",
+            "pid": 2915,
+            "entity_id": "HPe7Jpl8uHBzgZzwl9mB/w",
+            "executable": "/Applications/Visual Studio Code.app/Contents/MacOS/Code"
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "com.microsoft.VSCode.helper",
+            "trusted": true,
+            "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+            "exists": true,
+            "team_id": "UBF8T346G9",
+            "status": "No error."
+          },
+          "name": "Code Helper (Plugin)",
+          "pid": 3000,
+          "args_count": 0,
+          "entity_id": "PHVhF8uc4ejc8vY5aT1fqA",
+          "command_line": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/Users/snow/Library/Application Support/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,995646960663677317,9773455431832305004,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,LocalNetworkAccessChecks,MacWebContentsOcclusion,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --trace-process-track-uuid=3190709023793545454",
+          "executable": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+        },
+        "group_leader": {
+          "pid": 2915
+        },
+        "pid": 25351,
+        "entity_id": "GK/sJC8+JfJ3Cz4qBkLvaQ",
+        "executable": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+        "args": [
+          "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+          "--hidden",
+          "--no-require-git",
+          "--case-sensitive",
+          "--glob-case-insensitive",
+          "--ignore-file-case-insensitive",
+          "-g",
+          "!**/.svn",
+          "-g",
+          "!**/.hg",
+          "-g",
+          "!**/.DS_Store",
+          "-g",
+          "!**/Thumbs.db",
+          "-g",
+          "!/",
+          "-g",
+          "!**/node_modules",
+          "-g",
+          "!**/bower_components",
+          "-g",
+          "!**/*.code-search",
+          "--no-ignore-parent",
+          "--follow",
+          "--crlf",
+          "--fixed-strings",
+          "--no-config",
+          "--no-ignore-global",
+          "--json",
+          "--",
+          "action_id",
+          "."
+        ],
+        "session_leader": {
+          "pid": 1
+        },
+        "code_signature": {
+          "signing_id": "rg",
+          "trusted": true,
+          "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+          "exists": true,
+          "team_id": "UBF8T346G9",
+          "status": "No error."
+        },
+        "name": "rg",
+        "args_count": 32,
+        "command_line": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg --hidden --no-require-git --case-sensitive --glob-case-insensitive --ignore-file-case-insensitive -g !**/.svn -g !**/.hg -g !**/.DS_Store -g !**/Thumbs.db -g !/ -g !**/node_modules -g !**/bower_components -g !**/*.code-search --no-ignore-parent --follow --crlf --fixed-strings --no-config --no-ignore-global --json -- action_id .",
+        "hash": {
+          "sha1": "3359baf47037d715e1a6203cf0add720eb2b5de9",
+          "sha256": "7cbd9525786c7b23d66418bdf8bcb23334aaa4b91cd1c857f6ca6dde49815828",
+          "md5": "48797d84500593268f592d012d21ef88"
+        }
+      },
+      "@timestamp": "2026-04-15T18:20:09.933222Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd"
+        }
+      },
+      "host": {
+        "hostname": "PF00S3I",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:15 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T6000",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.3",
+          "platform": "macos",
+          "full": "macOS 26.3"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.153",
+          "fe80::c3d:5585:b34f:4850",
+          "fde9:1668:9e37:0:1853:2b07:a2e9:c8",
+          "fe80::c050:5eff:fe66:492d",
+          "fe80::5945:27dd:1574:295d",
+          "fe80::4459:baa6:36a9:3926",
+          "fe80::8ca3:4a51:8a1:a7e6",
+          "fe80::ce81:b1c:bd2c:69e",
+          "10.113.144.102"
+        ],
+        "name": "pf00s3i",
+        "id": "018AD229-D5A0-5151-B802-95CBEAF0D60E",
+        "mac": [
+          "ca-ed-f0-90-09-34",
+          "ca-ed-f0-90-09-35",
+          "ca-ed-f0-90-09-36",
+          "ca-ed-f0-90-09-14",
+          "ca-ed-f0-90-09-15",
+          "ca-ed-f0-90-09-16",
+          "36-74-72-5d-8b-00",
+          "36-74-72-5d-8b-04",
+          "36-74-72-5d-8b-08",
+          "ae-aa-67-f5-e1-e7",
+          "bc-d0-74-3e-35-cc",
+          "c2-50-5e-66-49-2d"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 30241796,
+        "ingested": "2026-04-15T18:20:24Z",
+        "created": "2026-04-15T18:20:09.933222Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "exec"
+        ],
+        "id": "OQkOk6YMaiMwtI8k+++1Acxo",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "start"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "snow",
+            "id": 501
+          }
+        },
+        "name": "snow",
+        "id": 501
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.04.15-015425",
+    "_id": "jVNfkp0BRgX9TCYRe6_6",
+    "_score": 22.522026,
+    "_ignored": [
+      "process.parent.command_line",
+      "process.parent.command_line.caseless"
+    ],
+    "_source": {
+      "agent": {
+        "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "PHVhF8uc4ejc8vY5aT1fqA",
+            "HPe7Jpl8uHBzgZzwl9mB/w",
+            "M9ngQq1u0plDJbeFGyqajg",
+            "5fpeJ5m0UqmycmYbQoqFCg"
+          ],
+          "effective_parent": {
+            "pid": 2915
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "com.microsoft.VSCode.helper",
+            "trusted": true,
+            "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+            "exists": true,
+            "team_id": "UBF8T346G9",
+            "status": "No error."
+          },
+          "name": "Code Helper (Plugin)",
+          "pid": 3000,
+          "args_count": 0,
+          "entity_id": "PHVhF8uc4ejc8vY5aT1fqA",
+          "command_line": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/Users/snow/Library/Application Support/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,995646960663677317,9773455431832305004,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,LocalNetworkAccessChecks,MacWebContentsOcclusion,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --trace-process-track-uuid=3190709023793545454",
+          "executable": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)"
+        },
+        "group_leader": {
+          "pid": 2915
+        },
+        "pid": 25351,
+        "entity_id": "GK/sJC8+JfJ3Cz4qBkLvaQ",
+        "executable": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+        "args": [
+          "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg",
+          "--hidden",
+          "--no-require-git",
+          "--case-sensitive",
+          "--glob-case-insensitive",
+          "--ignore-file-case-insensitive",
+          "-g",
+          "!**/.svn",
+          "-g",
+          "!**/.hg",
+          "-g",
+          "!**/.DS_Store",
+          "-g",
+          "!**/Thumbs.db",
+          "-g",
+          "!/",
+          "-g",
+          "!**/node_modules",
+          "-g",
+          "!**/bower_components",
+          "-g",
+          "!**/*.code-search",
+          "--no-ignore-parent",
+          "--follow",
+          "--crlf",
+          "--fixed-strings",
+          "--no-config",
+          "--no-ignore-global",
+          "--json",
+          "--",
+          "action_id",
+          "."
+        ],
+        "session_leader": {
+          "pid": 1
+        },
+        "code_signature": {
+          "signing_id": "rg",
+          "trusted": true,
+          "subject_name": "Developer ID Application: Microsoft Corporation (UBF8T346G9)",
+          "exists": true,
+          "team_id": "UBF8T346G9",
+          "status": "No error."
+        },
+        "name": "rg",
+        "args_count": 32,
+        "command_line": "/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg --hidden --no-require-git --case-sensitive --glob-case-insensitive --ignore-file-case-insensitive -g !**/.svn -g !**/.hg -g !**/.DS_Store -g !**/Thumbs.db -g !/ -g !**/node_modules -g !**/bower_components -g !**/*.code-search --no-ignore-parent --follow --crlf --fixed-strings --no-config --no-ignore-global --json -- action_id .",
+        "hash": {
+          "sha1": "3359baf47037d715e1a6203cf0add720eb2b5de9",
+          "sha256": "7cbd9525786c7b23d66418bdf8bcb23334aaa4b91cd1c857f6ca6dde49815828",
+          "md5": "48797d84500593268f592d012d21ef88"
+        }
+      },
+      "@timestamp": "2026-04-15T18:20:10.517197Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "f78182a4-cd28-4fca-a3a8-5cc08539c8cd"
+        }
+      },
+      "host": {
+        "hostname": "PF00S3I",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.3.0: Wed Jan 28 20:53:15 PST 2026; root:xnu-12377.81.4~5/RELEASE_ARM64_T6000",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.3",
+          "platform": "macos",
+          "full": "macOS 26.3"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.153",
+          "fe80::c3d:5585:b34f:4850",
+          "fde9:1668:9e37:0:1853:2b07:a2e9:c8",
+          "fe80::c050:5eff:fe66:492d",
+          "fe80::5945:27dd:1574:295d",
+          "fe80::4459:baa6:36a9:3926",
+          "fe80::8ca3:4a51:8a1:a7e6",
+          "fe80::ce81:b1c:bd2c:69e",
+          "10.113.144.102"
+        ],
+        "name": "pf00s3i",
+        "id": "018AD229-D5A0-5151-B802-95CBEAF0D60E",
+        "mac": [
+          "ca-ed-f0-90-09-34",
+          "ca-ed-f0-90-09-35",
+          "ca-ed-f0-90-09-36",
+          "ca-ed-f0-90-09-14",
+          "ca-ed-f0-90-09-15",
+          "ca-ed-f0-90-09-16",
+          "36-74-72-5d-8b-00",
+          "36-74-72-5d-8b-04",
+          "36-74-72-5d-8b-08",
+          "ae-aa-67-f5-e1-e7",
+          "bc-d0-74-3e-35-cc",
+          "c2-50-5e-66-49-2d"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 30242052,
+        "ingested": "2026-04-15T18:20:24Z",
+        "created": "2026-04-15T18:20:10.517197Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "end"
+        ],
+        "id": "OQkOk6YMaiMwtI8k+++1Acyq",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "end"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "snow",
+            "id": 501
+          }
+        },
+        "name": "snow",
+        "id": 501
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.03.06-014195",
+    "_id": "G7DLw5wBraV-scED6JF4",
+    "_score": 6.6456413,
+    "_source": {
+      "agent": {
+        "id": "5294f4ec-087c-4aa2-89b3-eafc87685069",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "k4L8UMguZxHRMSoc81S/Tg",
+            "LrOq5PIHfV0Gkf8ZGw9XVw",
+            "rN2+9dHjk6Sd7c/yq/OkQw",
+            "MywgJtv6XpS63jfvrOxSIw",
+            "PWZVFF/cLxrAKjoXk1REdw",
+            "4jbdZpwF30DxIqEViJiGog"
+          ],
+          "effective_parent": {
+            "name": "datagrip",
+            "pid": 10378,
+            "entity_id": "MywgJtv6XpS63jfvrOxSIw",
+            "executable": "/Applications/DataGrip.app/Contents/MacOS/datagrip"
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "4cae3d48-6df9-4641-a246-e9eac37b8e8d-5555494465e41d2a05ea322dbb183803dbfa467d",
+            "trusted": false,
+            "exists": true,
+            "team_id": "",
+            "status": "code failed to satisfy specified code requirement(s)"
+          },
+          "name": "python3.13",
+          "pid": 15072,
+          "args_count": 0,
+          "entity_id": "k4L8UMguZxHRMSoc81S/Tg",
+          "command_line": "/opt/anaconda3/bin/python3 /Users/kasim.tugrul/.claude/mcp_servers/snowflake_mcp.py",
+          "executable": "/opt/anaconda3/bin/python3.13"
+        },
+        "group_leader": {
+          "pid": 15061
+        },
+        "pid": 16862,
+        "entity_id": "aoWFYMA0rx/kQtEPBh6C7g",
+        "executable": "/opt/homebrew/Cellar/python@3.13/3.13.11_2/Frameworks/Python.framework/Versions/3.13/bin/python3.13",
+        "args": [
+          "/opt/homebrew/Cellar/snowflake-cli/3.14.0/libexec/bin/python",
+          "/opt/homebrew/bin/snow",
+          "sql",
+          "-q",
+          "\n-- Check when Customer.io email sending stops (used by roi_gmv.sql)\nselect \nSENT_AT::date as DT,\ncount(*) as CNT\nfrom PROD_ANALYTICS.CUSTOMER_IO.EMAIL_SENT_NEW\nwhere CAMPAIGN_ID = '868' and ACTION_ID = '13094'\ngroup by 1\norder by 1 desc\nlimit 20\n",
+          "-c",
+          "IY51662",
+          "--format",
+          "json"
+        ],
+        "session_leader": {
+          "pid": 15053
+        },
+        "code_signature": {
+          "signing_id": "python3-55554944d131b4cd9ef93bbb9bf8e1089c949402",
+          "trusted": false,
+          "exists": true,
+          "team_id": "",
+          "status": "code failed to satisfy specified code requirement(s)"
+        },
+        "name": "python3.13",
+        "args_count": 9,
+        "command_line": "/opt/homebrew/Cellar/snowflake-cli/3.14.0/libexec/bin/python /opt/homebrew/bin/snow sql -q \n-- Check when Customer.io email sending stops (used by roi_gmv.sql)\nselect \nSENT_AT::date as DT,\ncount(*) as CNT\nfrom PROD_ANALYTICS.CUSTOMER_IO.EMAIL_SENT_NEW\nwhere CAMPAIGN_ID = '868' and ACTION_ID = '13094'\ngroup by 1\norder by 1 desc\nlimit 20\n-c IY51662 --format json",
+        "hash": {
+          "sha1": "1cf0d21b241a56ef6200d92eeb127da2765b42f4",
+          "sha256": "2e0ccaeff53d8335112e0654cca683b6e4acbaa3bdba86fa86660cd07f9e0b20",
+          "md5": "57c81487f3f8ab152e636f098c831e86"
+        }
+      },
+      "@timestamp": "2026-03-06T15:37:03.939977Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "5294f4ec-087c-4aa2-89b3-eafc87685069"
+        }
+      },
+      "host": {
+        "hostname": "PF00BLK",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.2.0: Tue Nov 18 21:09:56 PST 2025; root:xnu-12377.61.12~1/RELEASE_ARM64_T6041",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.2",
+          "platform": "macos",
+          "full": "macOS 26.2"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.54",
+          "fe80::1809:d71b:4215:6124",
+          "fe80::30b2:6fff:fe3d:ebc0",
+          "fe80::5574:e047:4361:208d",
+          "fe80::ca55:9970:a66d:1419",
+          "fe80::222d:b241:c05:d683",
+          "fe80::ce81:b1c:bd2c:69e",
+          "192.168.64.1",
+          "fe80::842f:57ff:fed4:1464",
+          "fd75:805d:1026:3eb9:1045:35f9:b9ab:7c7d"
+        ],
+        "name": "pf00blk",
+        "id": "840FBBCE-F724-5E87-A15F-195E651F4C05",
+        "mac": [
+          "b2-54-d1-89-ed-a5",
+          "b2-54-d1-89-ed-a4",
+          "b2-54-d1-89-ed-a3",
+          "b2-54-d1-89-ed-83",
+          "b2-54-d1-89-ed-84",
+          "b2-54-d1-89-ed-85",
+          "36-88-37-40-7a-40",
+          "36-88-37-40-7a-44",
+          "36-88-37-40-7a-48",
+          "7e-80-64-d1-8f-cb",
+          "fa-a8-15-93-94-3a",
+          "32-b2-6f-3d-eb-c0",
+          "ba-bb-12-5e-c3-5d",
+          "86-2f-57-d4-14-64"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 4235447,
+        "ingested": "2026-03-06T15:37:26Z",
+        "created": "2026-03-06T15:37:03.939977Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "exec"
+        ],
+        "id": "OOKNDT7zhU0ADSuN++++QM+E",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "start"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "kasim.tugrul",
+            "id": 502
+          }
+        },
+        "name": "kasim.tugrul",
+        "id": 502
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  },
+  {
+    "_index": ".ds-logs-endpoint.events.process-default-2026.03.06-014195",
+    "_id": "HLDLw5wBraV-scED6JF4",
+    "_score": 6.282812,
+    "_source": {
+      "agent": {
+        "id": "5294f4ec-087c-4aa2-89b3-eafc87685069",
+        "type": "endpoint",
+        "version": "9.3.0"
+      },
+      "process": {
+        "Ext": {
+          "ancestry": [
+            "k4L8UMguZxHRMSoc81S/Tg",
+            "LrOq5PIHfV0Gkf8ZGw9XVw",
+            "rN2+9dHjk6Sd7c/yq/OkQw",
+            "MywgJtv6XpS63jfvrOxSIw",
+            "PWZVFF/cLxrAKjoXk1REdw",
+            "4jbdZpwF30DxIqEViJiGog"
+          ],
+          "effective_parent": {
+            "name": "datagrip",
+            "pid": 10378,
+            "entity_id": "MywgJtv6XpS63jfvrOxSIw",
+            "executable": "/Applications/DataGrip.app/Contents/MacOS/datagrip"
+          }
+        },
+        "parent": {
+          "args": [],
+          "code_signature": {
+            "signing_id": "4cae3d48-6df9-4641-a246-e9eac37b8e8d-5555494465e41d2a05ea322dbb183803dbfa467d",
+            "trusted": false,
+            "exists": true,
+            "team_id": "",
+            "status": "code failed to satisfy specified code requirement(s)"
+          },
+          "name": "python3.13",
+          "pid": 15072,
+          "args_count": 0,
+          "entity_id": "k4L8UMguZxHRMSoc81S/Tg",
+          "command_line": "/opt/anaconda3/bin/python3 /Users/kasim.tugrul/.claude/mcp_servers/snowflake_mcp.py",
+          "executable": "/opt/anaconda3/bin/python3.13"
+        },
+        "group_leader": {
+          "pid": 15061
+        },
+        "pid": 16862,
+        "entity_id": "aoWFYMA0rx/kQtEPBh6C7g",
+        "executable": "/opt/homebrew/Cellar/python@3.13/3.13.11_2/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python",
+        "args": [
+          "/opt/homebrew/Cellar/python@3.13/3.13.11_2/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python",
+          "/opt/homebrew/bin/snow",
+          "sql",
+          "-q",
+          "\n-- Check when Customer.io email sending stops (used by roi_gmv.sql)\nselect \nSENT_AT::date as DT,\ncount(*) as CNT\nfrom PROD_ANALYTICS.CUSTOMER_IO.EMAIL_SENT_NEW\nwhere CAMPAIGN_ID = '868' and ACTION_ID = '13094'\ngroup by 1\norder by 1 desc\nlimit 20\n",
+          "-c",
+          "IY51662",
+          "--format",
+          "json"
+        ],
+        "session_leader": {
+          "pid": 15053
+        },
+        "code_signature": {
+          "signing_id": "org.python.python",
+          "trusted": false,
+          "exists": true,
+          "team_id": "",
+          "status": "code failed to satisfy specified code requirement(s)"
+        },
+        "name": "Python",
+        "args_count": 9,
+        "command_line": "/opt/homebrew/Cellar/python@3.13/3.13.11_2/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python /opt/homebrew/bin/snow sql -q \n-- Check when Customer.io email sending stops (used by roi_gmv.sql)\nselect \nSENT_AT::date as DT,\ncount(*) as CNT\nfrom PROD_ANALYTICS.CUSTOMER_IO.EMAIL_SENT_NEW\nwhere CAMPAIGN_ID = '868' and ACTION_ID = '13094'\ngroup by 1\norder by 1 desc\nlimit 20\n-c IY51662 --format json",
+        "hash": {
+          "sha1": "4a23c06519574773a4e57cfff2f3bc2e32fd423d",
+          "sha256": "5d8c98aef4364852a4da7a23246168c7571cdd92e0111e556bedc0f660bb1285",
+          "md5": "eaae0d30798a26042332bb5682ac7adf"
+        }
+      },
+      "@timestamp": "2026-03-06T15:37:03.939977Z",
+      "ecs": {
+        "version": "8.10.0"
+      },
+      "data_stream": {
+        "namespace": "default",
+        "type": "logs",
+        "dataset": "endpoint.events.process"
+      },
+      "elastic": {
+        "agent": {
+          "id": "5294f4ec-087c-4aa2-89b3-eafc87685069"
+        }
+      },
+      "host": {
+        "hostname": "PF00BLK",
+        "os": {
+          "Ext": {
+            "variant": "macOS"
+          },
+          "kernel": "Darwin Kernel Version 25.2.0: Tue Nov 18 21:09:56 PST 2025; root:xnu-12377.61.12~1/RELEASE_ARM64_T6041",
+          "name": "macOS",
+          "family": "macos",
+          "type": "macos",
+          "version": "26.2",
+          "platform": "macos",
+          "full": "macOS 26.2"
+        },
+        "ip": [
+          "127.0.0.1",
+          "::1",
+          "fe80::1",
+          "192.168.1.54",
+          "fe80::1809:d71b:4215:6124",
+          "fe80::30b2:6fff:fe3d:ebc0",
+          "fe80::5574:e047:4361:208d",
+          "fe80::ca55:9970:a66d:1419",
+          "fe80::222d:b241:c05:d683",
+          "fe80::ce81:b1c:bd2c:69e",
+          "192.168.64.1",
+          "fe80::842f:57ff:fed4:1464",
+          "fd75:805d:1026:3eb9:1045:35f9:b9ab:7c7d"
+        ],
+        "name": "pf00blk",
+        "id": "840FBBCE-F724-5E87-A15F-195E651F4C05",
+        "mac": [
+          "b2-54-d1-89-ed-a5",
+          "b2-54-d1-89-ed-a4",
+          "b2-54-d1-89-ed-a3",
+          "b2-54-d1-89-ed-83",
+          "b2-54-d1-89-ed-84",
+          "b2-54-d1-89-ed-85",
+          "36-88-37-40-7a-40",
+          "36-88-37-40-7a-44",
+          "36-88-37-40-7a-48",
+          "7e-80-64-d1-8f-cb",
+          "fa-a8-15-93-94-3a",
+          "32-b2-6f-3d-eb-c0",
+          "ba-bb-12-5e-c3-5d",
+          "86-2f-57-d4-14-64"
+        ],
+        "architecture": "arm64"
+      },
+      "event": {
+        "agent_id_status": "verified",
+        "sequence": 4235450,
+        "ingested": "2026-03-06T15:37:26Z",
+        "created": "2026-03-06T15:37:03.939977Z",
+        "kind": "event",
+        "module": "endpoint",
+        "action": [
+          "exec"
+        ],
+        "id": "OOKNDT7zhU0ADSuN++++QM+S",
+        "category": [
+          "process"
+        ],
+        "type": [
+          "start"
+        ],
+        "dataset": "endpoint.events.process",
+        "outcome": "unknown"
+      },
+      "message": "Endpoint process event",
+      "user": {
+        "Ext": {
+          "real": {
+            "name": "kasim.tugrul",
+            "id": 502
+          }
+        },
+        "name": "kasim.tugrul",
+        "id": 502
+      },
+      "group": {
+        "Ext": {
+          "real": {
+            "name": "staff",
+            "id": 20
+          }
+        },
+        "name": "staff",
+        "id": 20
+      }
+    }
+  }
+]

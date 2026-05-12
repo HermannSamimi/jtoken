@@ -1,6 +1,6 @@
 import pytest
 
-from jtoken import JPackDecodeError, JPackEncodeError, decode, encode
+from jtoken import JPackDecodeError, JPackEncodeError, NormalizationError, decode, encode
 
 
 class TestEncode:
@@ -92,21 +92,19 @@ class TestEncode:
         with pytest.raises(JPackEncodeError, match="reserved"):
             encode({"falses": "something"})
 
-    def test_dot_in_key_raises(self):
-        with pytest.raises(JPackEncodeError, match="'.'"):
-            encode({"a.b": "value"})
+    def test_dot_in_key_roundtrips(self):
+        assert decode(encode({"a.b": "value"})) == {"a.b": "value"}
 
     def test_separator_in_key_raises(self):
         with pytest.raises(JPackEncodeError):
             encode({"a: b": "value"})
 
-    def test_unsupported_type_raises(self):
-        with pytest.raises(JPackEncodeError, match="Unsupported"):
-            encode({"data": [1, 2, 3]})
+    def test_list_values_roundtrip(self):
+        assert decode(encode({"data": [1, 2, 3]})) == {"data": [1, 2, 3]}
 
-    def test_non_dict_raises(self):
-        with pytest.raises(JPackEncodeError, match="Expected dict"):
-            encode("not a dict")  # type: ignore
+    def test_invalid_string_raises(self):
+        with pytest.raises(NormalizationError):
+            encode("not a dict")
 
 
 class TestDecode:
