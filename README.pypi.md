@@ -1,4 +1,8 @@
+<img src="https://raw.githubusercontent.com/hermannsamimi/jtoken/main/docs/jtoken_logo.png" alt="jtoken" width="36" />
+
 # jtoken
+
+Full documentation, diagrams, and the GitHub README: [github.com/HermannSamimi/jtoken](https://github.com/HermannSamimi/jtoken#readme).
 
 **Author:** Hermann Samimi
 

@@ -1,12 +1,38 @@
+<img src="docs/jtoken_logo.png" alt="jtoken" width="36" />
+
 # jtoken
+
+[![PyPI version](https://img.shields.io/pypi/v/jtoken)](https://pypi.org/project/jtoken/)
+[![Python versions](https://img.shields.io/pypi/pyversions/jtoken)](https://pypi.org/project/jtoken/)
+[![License](https://img.shields.io/pypi/l/jtoken)](https://github.com/HermannSamimi/jtoken/blob/main/LICENSE)
+[![Issues](https://img.shields.io/github/issues/HermannSamimi/jtoken)](https://github.com/HermannSamimi/jtoken/issues)
 
 Compress JSON for LLM prompts — same data, fewer tokens.
 
 **Author:** Hermann Samimi
 
+PyPI · [Repository](https://github.com/HermannSamimi/jtoken) · [Issues](https://github.com/HermannSamimi/jtoken/issues)
+
 jtoken strips JSON syntactic noise, collapses repeated booleans and nulls into summary lines, flattens nested dicts with dot notation, and supports normalization for Elasticsearch hits and MongoDB JSON. The package ships as a stdlib-first library with an optional `tiktoken` extra and a `jtoken` CLI.
 
+## Table of contents
+
+- [Installation](#installation)
+- [Quick start](#quick-start)
+- [What the format looks like](#what-the-format-looks-like)
+- [Normalization and denormalization](#normalization-and-denormalization)
+- [CLI](#cli)
+- [Token savings](#token-savings)
+- [API reference](#api-reference)
+- [Development](#development)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
+
 ## Installation
+
+> [!TIP]
+> Install `jtoken[tiktoken]` when you want OpenAI-compatible token counts from the real tokenizer. The core package uses only the standard library and falls back to an estimate when `tiktoken` is not installed.
 
 ### Core
 
@@ -70,7 +96,22 @@ Nested dicts flatten with dot notation. Booleans and nulls at any depth collapse
 
 ## Normalization and denormalization
 
+> [!NOTE]
+> Decoding back to Mongo shell, Extended JSON, or an Elasticsearch hit envelope is only lossless when you keep the **normalization context** from encode (`NormalizationContext`, or `--context-out` on the CLI) and pass it into decode (`context=`, or `--context-in`). Plain `json` / `python` output does not need a sidecar.
+
 Foreign document shapes can be normalized before encoding and restored after decode with a sidecar context.
+
+```mermaid
+flowchart LR
+  raw[RawDoc] --> norm[Normalize]
+  norm --> enc[Encode]
+  enc --> jt[JtokenText]
+  enc --> ctx[ContextSidecar]
+  jt --> dec[Decode]
+  ctx --> dec
+  dec --> denorm[Denormalize]
+  denorm --> out[Output]
+```
 
 ```python
 import jtoken
@@ -90,7 +131,8 @@ jtoken encode --input-format elastic_hit -f hit.json --context-out hit.ctx.json
 jtoken decode --output-format mongo_shell -f hit.jtoken --context-in hit.ctx.json
 ```
 
-### Input and output formats
+<details>
+<summary><strong>Input and output formats</strong> (reference tables)</summary>
 
 Use `source=` / `target=` in Python or `--input-format` / `--output-format` on the CLI. `encode`, `stats`, and `count` accept `--input-format` (default `auto`). `decode` accepts `--output-format` (default `json`).
 
@@ -116,6 +158,8 @@ Use `source=` / `target=` in Python or `--input-format` / `--output-format` on t
 With `auto`, jtoken picks `mongo_shell` when it sees `ObjectId(...)` or `ISODate(...)`, `elastic_hit` when the object has a dict `_source`, `mongo_extended` when Extended JSON markers such as `$oid` or `$date` appear, and otherwise `json`.
 
 Write the normalization context to a sidecar on encode (`--context-out` / `NormalizationContext.to_dict()`) and pass it back on decode when the output dialect is not plain JSON or Python. The sidecar records list paths, dotted keys, Elasticsearch envelope metadata, and MongoDB type markers in `typed_values` (`object_id`, `datetime`, `long`).
+
+</details>
 
 ### MongoDB shell and Extended JSON
 
@@ -150,7 +194,8 @@ print(stats.jtoken_tokens, stats.json_tokens, stats.saved, stats.percent)
 
 `count_tokens` and `count_text_tokens` are also available. Savings compare the jtoken representation against pretty JSON by default (`json_indent=2`).
 
-### Representative token counts
+<details>
+<summary><strong>Representative token counts</strong> (sample table)</summary>
 
 Sample payloads measured as pretty JSON versus jtoken on representative documents:
 
@@ -161,9 +206,14 @@ Sample payloads measured as pretty JSON versus jtoken on representative document
 | PostgreSQL structured document | 831 | 685 |
 | Standard JSON | 617 | 503 |
 
+</details>
+
 ![Token count by representation](docs/token-savings-bar-chart.svg)
 
 ## API reference
+
+<details>
+<summary><strong>Expand full API list</strong></summary>
 
 ### Package metadata
 
@@ -222,15 +272,25 @@ Sample payloads measured as pretty JSON versus jtoken on representative document
 - `DenormalizationError`
 - `TokenCountError`
 
+</details>
+
 ## Development
 
 ```bash
-git clone https://github.com/hermannsamimi/jtoken
+git clone https://github.com/HermannSamimi/jtoken.git
 cd jtoken
 pip install -e ".[dev]"
 pytest
 pytest --cov=jtoken --cov-report=term-missing
 ```
+
+## Contributing
+
+Pull requests are welcome. Install the dev extra (see [Development](#development)), run `pytest`, and open a PR against the default branch with a short description of the change.
+
+## Security
+
+If you discover a security issue, please report it privately via [GitHub Security advisories](https://github.com/HermannSamimi/jtoken/security/advisories/new) for this repository rather than a public issue.
 
 ## License
 

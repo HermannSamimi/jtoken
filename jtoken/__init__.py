@@ -18,7 +18,7 @@ from .tokens import (
     token_savings,
 )
 
-__version__ = "0.3.0"
+__version__ = "0.3.4"
 __author__ = "Hermann Samimi"
 
 
