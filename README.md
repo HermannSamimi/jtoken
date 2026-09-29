@@ -195,20 +195,28 @@ print(stats.jtoken_tokens, stats.json_tokens, stats.saved, stats.percent)
 `count_tokens` and `count_text_tokens` are also available. Savings compare the jtoken representation against pretty JSON by default (`json_indent=2`).
 
 <details>
-<summary><strong>Representative token counts</strong> (sample table)</summary>
+<summary><strong>Measured token savings</strong> (reproducible benchmark)</summary>
 
-Sample payloads measured as pretty JSON versus jtoken on representative documents:
+Measured with tiktoken (`cl100k_base`) on 50 synthetic documents per shape, encoded one
+document at a time (as they would be injected into a prompt). Every payload is verified
+lossless (`encode_document` → `decode_document` → equal). Re-run it with the bundled script:
 
-| Document type | JSON | jtoken |
-|---|---:|---:|
-| ELK hit | 1537 | 583 |
-| Mongo shell | 770 | 508 |
-| PostgreSQL structured document | 831 | 685 |
-| Standard JSON | 617 | 503 |
+```bash
+python3 benchmarks/benchmark.py
+```
+
+| Payload (50 docs) | JSON (pretty) | jtoken | Saved |
+|---|---:|---:|---:|
+| Elasticsearch hits | 12,038 | 10,671 | 11.4% |
+| MongoDB documents (extended JSON) | 9,437 | 7,630 | 19.1% |
+| Nested API events | 12,773 | 11,083 | 13.2% |
+| **Total** | **34,248** | **29,384** | **14.2%** |
+
+Savings depend on structure: short prose-heavy values cap the wins, while repetitive,
+nested machine-generated JSON (logs, monitoring, index payloads) compresses substantially
+better. Run the script on your own payloads before drawing conclusions.
 
 </details>
-
-![Token count by representation](docs/token-savings-bar-chart.svg)
 
 ## API reference
 
@@ -295,3 +303,7 @@ If you discover a security issue, please report it privately via [GitHub Securit
 ## License
 
 MIT — © 2026 Hermann Samimi
+
+---
+
+⭐ **If jtoken saved you tokens (or money on your API bill), please star the repo** — it helps other LLM developers find it. And if you measured savings on *your* payloads, an issue with the numbers (and shape of data) is very welcome.

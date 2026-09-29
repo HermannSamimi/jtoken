@@ -226,18 +226,17 @@ print(stats.jtoken_tokens, stats.json_tokens, stats.saved, stats.percent)
 
 `json_indent=2` compares against prompt-style pretty JSON. Use `json_indent=None` for compact JSON.
 
-### Representative token counts
+### Measured token savings
 
-Sample payloads measured as pretty JSON versus jtoken on representative documents:
+Measured with tiktoken (`cl100k_base`), 50 documents per shape, every payload verified
+lossless on round-trip. Reproduce it yourself: [`benchmarks/benchmark.py`](https://github.com/hermannsamimi/jtoken/blob/main/benchmarks/benchmark.py)
 
-| Document type | JSON | jtoken |
-|---|---:|---:|
-| ELK hit | 1537 | 583 |
-| Mongo shell | 770 | 508 |
-| PostgreSQL structured document | 831 | 685 |
-| Standard JSON | 617 | 503 |
-
-![Token count by representation](https://raw.githubusercontent.com/hermannsamimi/jtoken/main/docs/token-savings-bar-chart.svg)
+| Payload (50 docs) | JSON (pretty) | jtoken | Saved |
+|---|---:|---:|---:|
+| Elasticsearch hits | 12,038 | 10,671 | 11.4% |
+| MongoDB documents (extended JSON) | 9,437 | 7,630 | 19.1% |
+| Nested API events | 12,773 | 11,083 | 13.2% |
+| **Total** | **34,248** | **29,384** | **14.2%** |
 
 ## CLI
 

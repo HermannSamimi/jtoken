@@ -277,11 +277,12 @@ def _convert_mongo_extended(
         return oid
     if keys == {"$date"}:
         date_value = value["$date"]
-        if isinstance(date_value, dict) and "$numberLong" in date_value:
+        epoch_millis = isinstance(date_value, dict) and "$numberLong" in date_value
+        if epoch_millis:
             date_value = date_value["$numberLong"]
         iso = str(date_value)
         if path:
-            ctx.typed_values[path] = "datetime"
+            ctx.typed_values[path] = "datetime_long" if epoch_millis else "datetime"
         return iso
     if keys == {"$numberInt"}:
         return int(value["$numberInt"])

@@ -1,4 +1,4 @@
-"""jtoken — Compress JSON for LLM prompts with ~30% fewer tokens."""
+"""jtoken — Compress JSON for LLM prompts with fewer tokens (measured benchmarks in README)."""
 
 from .denormalize import decode_document, denormalize, render_output
 from .exceptions import (

@@ -160,6 +160,8 @@ def _apply_mongo_extended(value: Any, context: NormalizationContext, path: str) 
     typed = context.typed_values.get(path)
     if typed == "object_id":
         return {"$oid": value}
+    if typed == "datetime_long":
+        return {"$date": {"$numberLong": str(value)}}
     if typed == "datetime":
         return {"$date": value}
     if typed == "long" and isinstance(value, int):

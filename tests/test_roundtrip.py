@@ -74,6 +74,23 @@ def test_roundtrip_arrays_restored_without_sidecar():
     assert decoded == data
 
 
+def test_roundtrip_mongo_extended_epoch_millis_date():
+    # $date wrapped in $numberLong (epoch millis) must restore its exact shape
+    doc = {"_id": {"$oid": "69ca983fbf8c8953c43c2407"},
+           "ts": {"$date": {"$numberLong": "1788220800000"}},
+           "iso_ts": {"$date": "2026-09-01T00:00:00.000Z"}}
+    text, ctx = encode_document(doc, source="mongo_extended")
+    restored = decode_document(text, target="mongo_extended", context=ctx)
+    assert restored == doc
+
+
+def test_roundtrip_mongo_extended_number_long_scalar():
+    doc = {"count": {"$numberLong": "9007199254740993"}}
+    text, ctx = encode_document(doc, source="mongo_extended")
+    restored = decode_document(text, target="mongo_extended", context=ctx)
+    assert restored == doc
+
+
 def test_explicit_context_overrides_embedded():
     text, _ = encode_document(MONGO_SHELL_DOC, source="mongo_shell")
     from jtoken import NormalizationContext
