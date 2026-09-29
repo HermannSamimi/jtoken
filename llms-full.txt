@@ -1,0 +1,75 @@
+# jtoken
+
+> Compress JSON-shaped documents (plain JSON, MongoDB shell/Extended JSON, Elasticsearch hits) for LLM prompts: fewer tokens, readable line-oriented output, lossless round-trip, CLI, and tiktoken-based token measurement. Python 3.8+, MIT, stdlib-only core.
+
+jtoken exists because retrieved JSON documents in RAG/agent prompts repeat syntactic keys and waste context-window tokens. jtoken rewrites those documents into a short line-oriented format and can decode back **exactly**, including Mongo `ObjectId`/`$date`/`$numberLong` forms and Elasticsearch hit envelopes, via a normalization context.
+
+## API reference
+
+### Core codec
+- `jtoken.encode(data: dict) -> str` — compress a nested scalar dict into jtoken text.
+- `jtoken.decode(text: str) -> dict` — reconstruct the nested dict.
+- Aliases: `jtoken.dumps`, `jtoken.loads`.
+
+### Document workflow (dialect-aware, lossless)
+- `jtoken.encode_document(raw, *, source="auto", context=None) -> (text, NormalizationContext)`
+  `source`/auto-detect accepts: `json`, `python`, `mongo_extended` (`$oid`, `$date`, `$numberLong`, …), `mongo_shell` (`ObjectId(...)`, `ISODate(...)`, `NumberLong(...)`), `elastic_hit` (`_source` envelope), `elastic_source`.
+- `jtoken.decode_document(text, *, target="python", context) -> Any`
+  `target` accepts: `python`, `json`, `mongo_extended`, `mongo_shell`, `elastic_hit`, `elastic_source`.
+- `NormalizationContext` sidecar records list paths, dotted keys, ESL envelope metadata and BSON type markers (`object_id`, `datetime`, `datetime_long`, `long`); methods `to_dict()` / `from_dict()`. Pass `--context-out file` / `--context-in file` on the CLI.
+
+### Token measurement
+- `jtoken.count_tokens(data, *, model="cl100k_base", backend="auto|tiktoken|estimate") -> int`
+- `jtoken.count_text_tokens(text, *, model="cl100k_base", backend="auto") -> int`
+- `jtoken.token_savings(data, *, model, backend, json_indent=2) -> TokenSavings`
+  `TokenSavings` fields: `jtoken_tokens`, `json_tokens`, `saved`, `percent`.
+
+### CLI
+```
+jtoken encode --input-format mongo_shell -f doc.json --context-out doc.ctx.json
+jtoken decode --output-format mongo_extended -f doc.jtoken --context-in doc.ctx.json
+jtoken stats --backend tiktoken --model gpt-4o -f doc.json
+jtoken count --backend estimate -f doc.json
+```
+
+## Encoding rules
+
+- Nested dicts flatten with dot notation (`page.referrer: …`).
+- Repeated booleans/nulls collapse: `trues: active, verified`, `nulls: ref`.
+- Lists become indexed keys and are reconstructed from the context.
+- Keys containing `.` are escaped and restored from the context.
+- Reserved top-level keys: `nulls`, `trues`, `falses`. Keys cannot contain `": "` in the core codec.
+
+## Measured performance (tiktoken cl100k_base, 50 docs each, all verified lossless)
+
+| Payload | JSON (pretty) | jtoken | Saved |
+|---|---:|---:|---:|
+| Elasticsearch hits | 12,038 | 10,671 | 11.4% |
+| MongoDB documents (extended JSON) | 9,437 | 7,630 | 19.1% |
+| Nested API events | 12,773 | 11,083 | 13.2% |
+| Total | 34,248 | 29,384 | 14.2% |
+
+Savings are structure-dependent: repetitive machine-generated JSON compresses much better than prose-heavy documents. Reproduce: `python3 benchmarks/benchmark.py` (https://github.com/HermannSamimi/jtoken/blob/main/benchmarks/benchmark.py).
+
+## LangChain integration
+
+`langchain-jtoken` (https://pypi.org/project/langchain-jtoken/) provides `JSONTokenDocumentTransformer`, a LangChain `BaseDocumentTransformer` that compresses JSON `page_content` while preserving metadata; non-JSON content passes through unchanged.
+
+```python
+from langchain_jtoken import JSONTokenDocumentTransformer
+docs = JSONTokenDocumentTransformer().transform_documents(docs)
+```
+
+## Common gotchas
+
+- Lossless round-trip for dialect data requires keeping the context (sidecar or embedded header).
+- Encoding collapses lists into indexed keys: use `decode_document` with the context to restore them as lists.
+- Plain `jtoken.decode` targets JSON dicts; use `decode_document(..., target=...)` for Mongo/ES shapes.
+
+## Links
+
+- GitHub repository: https://github.com/HermannSamimi/jtoken
+- PyPI: https://pypi.org/project/jtoken/
+- Issues: https://github.com/HermannSamimi/jtoken/issues
+- LangChain integration: https://pypi.org/project/langchain-jtoken/
+- Author: Hermann Samimi, MIT License

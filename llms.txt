@@ -1,0 +1,50 @@
+# jtoken
+
+> Compress JSON-shaped documents for LLM prompts with fewer tokens — lossless, reproducible, stdlib-only.
+
+jtoken encodes plain JSON, MongoDB shell/Extended JSON, and Elasticsearch hits into a short line-oriented format and can decode it back exactly (lossless round-trip). Measured savings (tiktoken, cl100k_base): −11.4% Elasticsearch hits, −19.1% MongoDB documents, −13.2% nested API events, −14.2% overall on the bundled benchmark.
+
+## When to use
+
+- RAG pipelines fit more retrieved JSON documents into the context window.
+- Agent prompts include API/webhook payloads that repeat keys.
+- You need to reconstruct the exact original data after compression (context sidecar).
+
+## Install
+
+```bash
+pip install jtoken
+# with tokenizer-accurate counting:
+pip install "jtoken[tiktoken]"
+```
+
+## Quick reference
+
+```python
+import jtoken
+
+# plain encode/decode (dict in, text out, dict back)
+text = jtoken.encode({"user": "alice", "premium": True, "ref": None})
+data = jtoken.decode(text)          # lossless for scalar/nested dicts
+assert data == {"user": "alice", "premium": True, "ref": None}
+
+# full-fidelity document workflow (dialects, lossless round-trip)
+text, context = jtoken.encode_document(raw_json_text, source="auto")
+restored = jtoken.decode_document(text, target="elastic_hit", context=context)
+
+# measure token savings
+stats = jtoken.token_savings(data, model="gpt-4o", backend="tiktoken")
+print(stats)  # jtoken: X tokens | json: Y tokens | saved: Z (P%)
+
+# CLI
+# jtoken encode -f doc.json
+# jtoken stats --model gpt-4o --backend tiktoken -f doc.json
+```
+
+## Links
+
+- GitHub: https://github.com/HermannSamimi/jtoken
+- PyPI: https://pypi.org/project/jtoken/
+- Benchmark (reproducible): https://github.com/HermannSamimi/jtoken/blob/main/benchmarks/benchmark.py
+- LangChain integration: https://pypi.org/project/langchain-jtoken/
+- License: MIT
